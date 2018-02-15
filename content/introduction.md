@@ -24,10 +24,17 @@ i.e., it was not designed with extensions or adaptations in mind.
 In this article, we introduce _Comunica_,
 which is a highly _modular_ SPARQL engine for _federated_ _SPARQL query_ evaluation over _heterogeneous sources_,
 including TPF entrypoints, SPARQL endpoints and data dumps.
-Furthermore, just like the TPF client, Comunica is implemented in JavaScript,
-which makes it an engine that is completely based on Web technologies.
 Comunica thereby positions itself as the successor of the TPF client,
 with the aim to serve as a flexible research platform for experimenting with new Linked Data querying and publication techniques.
+
+Comunica is unlike similar works on different levels:
+
+1. The **modularity** of Comunica allows for easy _extensions_ and _customization_. Furthermore, modules can be added and removed using an RDF configuration file, which makes it possible for users to build and finetune their own engine.
+2. Comunica enables federated querying over **heterogeneous** sources. This makes it for example possible to evaluate queries over any combination of SPARQL endpoints, TPF entrypoints, datadumps or other custom datasources.
+3. Comunica is implemented for the **Web** in JavaScript, which makes it possible to use it in a browser, from the command line, via the [SPARQL protocol](cite:cites spec:sparqlprot), or from any JavaScript application.
+
+In order to encourage reusability, Comunica and its default modules are publicly available
+on GitHub and the npm package manager (TODO: add links) under an open-source license.
 
 This article is structure as follows:
 In the next section, we discuss the related work, followed by a listing of the requirements for Comunica in [](#requirements).
