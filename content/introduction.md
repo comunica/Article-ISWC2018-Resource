@@ -9,7 +9,7 @@ data dumps and [SPARQL query endpoints](cite:cites spec:sparqlprot).
 In an attempt to solve the [major availability issues](cite:cites) when publishing Linked Data through SPARQL endpoints,
 the [Triple Pattern Fragments (TPF) framework](cite:cites ldf) was introduced as a way to lower server load
 by exposing Linked Data through a low-cost TPF server interface and
-by moving part of SPARQL query evaluation to the client side.
+by moving part of [SPARQL query evaluation](cite:cites spec:sparqllang) to the client side.
 This alternative Linked Data publication method has been receiving increasing attention within the research community,
 including [server interface extensions](cite:cites brtpf, vtpf, tpfamf, tpfsubstring) to [client-side optimizations](cite:cites tpfoptimization, cyclades).
 Most of these works include an adaptation of the TPF client (also known as Client.js or `ldf-client`), the default implementation of
