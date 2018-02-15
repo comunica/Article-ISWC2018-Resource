@@ -1,4 +1,35 @@
 ## Introduction
 {:#introduction}
 
-TODO: context, motivation for comunica (old ldf-client not modular, hard to extend; query engine for the _Web_)
+The number of datasets that are available in the [Linked Open Data](cite:cites linkeddata) cloud is [continuously increasing](cite:cites linkeddataadoption).
+As of February 2018, the [LODStats project](cite:cites lodstats) reports 2,973 available datasets containing more than 149 billion triples.
+This Linked Data is being published in different ways, such as
+data dumps and [SPARQL query endpoints](cite:cites spec:sparqlprot).
+
+In an attempt to solve the [major availability issues](cite:cites) when publishing Linked Data through SPARQL endpoints,
+the [Triple Pattern Fragments (TPF) framework](cite:cites ldf) was introduced as a way to lower server load
+by exposing Linked Data through a low-cost TPF server interface and
+by moving part of SPARQL query evaluation to the client side.
+This alternative Linked Data publication method has been receiving increasing attention within the research community,
+including [server interface extensions](cite:cites brtpf, vtpf, tpfamf, tpfsubstring) to [client-side optimizations](cite:cites tpfoptimization, cyclades).
+Most of these works include an adaptation of the TPF client (also known as Client.js or `ldf-client`), the default implementation of
+the TPF algorithm for federated evaluation of SPARQL queries using TPF entrypoints.
+
+These client adaptations clients are however not fully compatible with each other.
+They are implemented as different diverged _forks_ of the original client,
+and it is not trivial to harmonize them.
+This is because the TPF client was specifically made to query over TPF entrypoints,
+i.e., it was not designed with extensions or adaptations in mind.
+
+In this article, we introduce _Comunica_,
+which is a highly _modular_ SPARQL engine for _federated_ _SPARQL query_ evaluation over _heterogeneous sources_,
+including TPF entrypoints, SPARQL endpoints and data dumps.
+Furthermore, just like the TPF client, Comunica is implemented in JavaScript,
+which makes it an engine that is completely based on Web technologies.
+Comunica thereby positions itself as the successor of the TPF client,
+with the aim to serve as a flexible research platform for experimenting with new Linked Data querying and publication techniques.
+
+This article is structure as follows:
+In the next section, we discuss the related work, followed by a listing of the requirements for Comunica in [](#requirements).
+After that, we dicuss the architecture of Comunica in [](#architecture) and its implementation in [](#implementation).
+Finally, [](#conclusions) concludes and contains opportunities for future work.
