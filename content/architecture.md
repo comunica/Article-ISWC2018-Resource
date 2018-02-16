@@ -8,7 +8,7 @@ We first discuss the main design patterns that are used within Comunica.
 After that, we talk about the wiring of modules based on dependency-injection.
 Finally, we give an overview of all modules
 
-### Actor-Bus-Mediator Pattern
+### Actor-Mediator-Bus Pattern
 
 The modules in comunica work together based on the [_actor_](cite:cites actormodel),
 [_publish-subscribe_](cite:cites publishsubscribepattern) and [_mediator_](cite:cites mediatorpattern) patterns.
@@ -45,7 +45,17 @@ Based on their responses, the mediator could determine the actor with the lowest
 After that, the mediator invokes the run phase of this actor, and returns its response.
 More complex mediators could exist that take combine responses of certain responses.
 
-TODO: add example figure showing a small workflox (test+run), clarify that run skips the bus
+[](#actor-mediator-bus) shows an example logic flow between actors through a mediator and a bus.
+
+<figure id="actor-mediator-bus">
+<img src="img/actor-mediator-bus.svg" alt="[actor-mediator-bus pattern]">
+<figcaption markdown="block">
+Example logic flow where Actor 0 requires an action to be performed.
+This is done by sending the action to the Mediator, which sends a test action to Actors 1, 2 and 3 via the Bus.
+The test replies are then collected by the Mediator, and it chooses the best actor for the action, in this case Actor 3.
+Finally, the Mediator sends the original action to Actor 3, and returns its response to Actor 0.
+</figcaption>
+</figure>
 
 ### Dynamic Wiring
 
