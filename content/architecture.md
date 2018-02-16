@@ -59,7 +59,37 @@ Finally, the Mediator sends the original action to Actor 3, and returns its resp
 
 ### Dynamic Wiring
 
-TODO: stuff with componentsjs
+In order to make actors, mediators and buses loosely coupled and flexible to combine,
+we use the concept of [_dependency injection_](cite:cites DependencyInjection)
+to wire these modules together at runtime based on a configuration file.
+We do this using the [Components.js](cite:cites componentsjs) JavaScript dependency injection framework,
+This framework is based on semantic module descriptions and configuration files
+using the [Object-Oriented Components ontology](cite:cites describingsoftwareconfigurations).
+
+Using the Components.js framework, we semantically describe all actors, mediators and buses in [JSON-LD](cite:cites jsonld).
+[](#config-actor) shows an example of the semantic description of an RDF parser.
+The Comunica engine can be _initialized_ using Components.js configuration files,
+that describe the wiring between actors, mediators and buses.
+For example, [](#config-parser) shows a configuration file of an engine that is able to parse N3 and JSON-LD-based documents.
+This example shows that Comunica is, next to its main purpose of being a query engine,
+also able to be used for more specific tasks, such as building a custom RDF parser.
+
+<figure id="config-actor" class="listing">
+````/code/config-actor.json````
+<figcaption markdown="block">
+Semantic description of an actor that is able to parse N3-based RDF serializations.
+This actor has a single parameter that allows media types to be registered that this parser is able to handle.
+In this case, the actor has four default media types that can be overridden via the config file.
+</figcaption>
+</figure>
+
+<figure id="config-parser" class="listing">
+````/code/config-parser.json````
+<figcaption markdown="block">
+Comunica configuration of `ActorInitRdfParse` for parsing an RDF document in an unknown serialization.
+This actor is linked to a mediator with a bus containing two RDF parsers for specific serializations.
+</figcaption>
+</figure>
 
 ### Modules
 
