@@ -93,4 +93,26 @@ This actor is linked to a mediator with a bus containing two RDF parsers for spe
 
 ### Modules
 
-TODO: overview of the available actors, buses and mediators
+At the time of writing, comunica consists of 72 different modules.
+This consists of 13 buses, 3 mediator types, 51 actors and 5 other modules.
+In this section, we will only discuss the most important actors and their interactions.
+
+The main bus in Comunica is the _query operation_ bus, which consists of 15 different actors
+that implement the typical SPARQL operations such as quad patterns, basic graph patterns (BGPs), unions, projects, ...
+These actors interact with each other using quad and bindings streams,
+and act on a query plan in [SPARQL algebra](cite:cites spec:sparqllang).
+By default, no query plan rewriting is done, and BGPs are resolved using the original [TPF algorithm](cite:cites ldf).
+
+In order to enable heterogeneous sources to be queried in a federated way,
+we allow a list of sources, annotated by type, to be passed when a query is initiated.
+These sources are passed down through the chain of query operation actors,
+until the quad pattern level is reached.
+At this level, different actors exist for handling a single source of a certain type,
+such as TPF entrypoints, SPARQL endpoints, local or remote datadumps or [HDT](cite:cites hdt) files.
+In the case of multiple sources, one actor exists that implements the federation algorithm of the [TPF client](cite:cites ldf),
+but instead of federating over different TPF entrypoints, it federates over different single-source quad pattern actors.
+
+At the end of the pipeline, different actors are available for serializing the results of a query in different ways.
+For instance, there are actors for serializing the results according to
+the SPARQL [JSON](cite:cites spec:sparqljson) and [XML](cite:cites spec:sparqlxml) result specifications,
+but actors with more visual and developer-friendly formats are available as well.
