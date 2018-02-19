@@ -9,9 +9,13 @@ TODO?
 
 ### SPARQL engines
 
+In this section, we discuss SPARQL engines with and without an embedded store.
+Comunica is an engine that is independent of an RDF store,
+but for the sake of completeness, we also mention works _with_ a coupled store.
+
 Most of the existing SPARQL engines are coupled with an internal store.
-This store can either be native RDF store, such as [AllegroGraph](cite:cites allegrograph) or [Blazegraph](cite:cites blazegraph),
-or a non-RDF store can be used in the background, such as [Virtuoso](cite:cites virtuoso) that is a Object-Relational Database Management System
+This can either be native a RDF store, such as for [AllegroGraph](cite:cites allegrograph) or [Blazegraph](cite:cites blazegraph),
+or a non-RDF store can be used, such as for [Virtuoso](cite:cites virtuoso) that is a Object-Relational Database Management System
 and evaluates SPARQL queries by translating them into SQL.
 
 The [Triple Pattern Fragments client](cite:cites ldf) is a client-side SPARQL engine that is decoupled from an RDF store.
