@@ -19,7 +19,7 @@ or a non-RDF store can be used, such as for [Virtuoso](cite:cites virtuoso) that
 and evaluates SPARQL queries by translating them into SQL.
 
 The [Triple Pattern Fragments client](cite:cites ldf) is a client-side SPARQL engine that is decoupled from an RDF store.
-It is able to retrieve data from TPF entrypoints using triple patterns.
+It is able to retrieve data over HTTP from TPF entrypoints using triple patterns.
 But it can not directly interact with other types of datasources.
 Furthermore, the TPF client is built for the Web, as it can run in any JavaScript environment, such as the browser.
 
@@ -32,4 +32,4 @@ ARQ is similar to the Comunica engine that we propose, but it is different on 3 
 
 1. ARQ is a Java engine, while Comunica is built for the Web, i.e., it is implemented in JavaScript.
 2. Comunica is modular and supports declarative module injection, while ARQ only supports customization by implementing a custom query engine programmatically to handle operators.
-3. ARQ supports federation over SPARQL endpoints, while Comunica supports federated query evaluation over heterogeneous sources, including not only SPARQL endpoints, but also TPF entrypoints and more.
+3. ARQ supports federation over SPARQL endpoints, while Comunica supports federated query evaluation over heterogeneous interfaces, including not only SPARQL endpoints, but also TPF entrypoints and more.
