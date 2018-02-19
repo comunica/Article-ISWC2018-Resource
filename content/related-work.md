@@ -1,7 +1,9 @@
 ## Related Work
 {:#related-work}
 
-TODO: actor/publish-subscribe/mediator patterns?
+In this section, we discuss the Linked Data Fragments vision,
+followed by the state-of-the-art on modular SPARQL engines.
+Finally, we discuss several software design patterns that are essential in the architecture of Comunica.
 
 ### Linked Data Fragments
 
@@ -60,3 +62,36 @@ ARQ is similar to the Comunica engine that we propose, but it is different on 3 
 1. ARQ is a Java engine, while Comunica is built for the Web, i.e., it is implemented in JavaScript.
 2. Comunica is modular and supports declarative module injection, while ARQ only supports customization by implementing a custom query engine programmatically to handle operators.
 3. ARQ supports federation over SPARQL endpoints, while Comunica supports federated query evaluation over heterogeneous interfaces, including not only SPARQL endpoints, but also TPF entrypoints and more.
+
+### Software design patterns
+
+In this section, we discuss three software design patterns that are relevant to the modular design of the Comunica engine.
+
+#### Publish–subscribe pattern
+
+The [_publish-subscribe_](cite:cites publishsubscribepattern) design pattern involves the passing of _messages_ between _publishers_ and _subscribers_.
+Instead of publishers being programmed to send messages directly to subscribers, they are programmed to _publish_ messages to certain _categories_.
+Subscribers can _subscribe_ to these categories which will cause them to receive these published messages, without requiring prior knowledge of the publishers.
+This pattern is useful for decoupling software components from each other,
+and only requiring prior knowledge of message categories.
+
+#### Actor Model
+
+The [_actor_ model](cite:cites actormodel) was designed as a way to achieve highly parallel systems consisting of many independent _agents_
+communicating using messages --such as the publish-subscribe pattern-- where each actor performs a specific task.
+An actor is a computational unit that acts on messages, and can send messages to other messages.
+The main advantages of the actor model are that actors can be independently made to implement certain specific tasks based on messages,
+and that these can be handled asynchronously.
+These characteristics are highly beneficial to the modularity that we want to achieve with Comunica.
+
+#### Mediator pattern
+
+The [_mediator_](cite:cites mediatorpattern) pattern is able to _reduce coupling_ between software components that interact with each other,
+and to easily _change the interaction_ if needed.
+This can be achieved by encapsulating the interaction between software components in a mediator component.
+Instead of the components having to interact with each other directly,
+they now interact through the mediator.
+These components therefore do not require prior knowledge of each other,
+and different implementations of these mediators can lead to different interaction results.
+In Comunica, we use this pattern to handle actions when multiple actors are able to solve the same task,
+by for example choosing the _best_ actor for a task, or by combining the solutions of all actors.

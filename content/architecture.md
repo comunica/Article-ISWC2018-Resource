@@ -11,7 +11,7 @@ Finally, we give an overview of all modules
 ### Actor-Mediator-Bus Pattern
 
 The modules in comunica work together based on the [_actor_](cite:cites actormodel),
-[_publish-subscribe_](cite:cites publishsubscribepattern) and [_mediator_](cite:cites mediatorpattern) patterns.
+[_mediator_](cite:cites mediatorpattern) and [_publish-subscribe_](cite:cites publishsubscribepattern) patterns.
 Any number of _actor_ modules can be created,
 where each actor interact with _mediators_, that in its turn invoke other actors that are registered to a certain _bus_.
 _Actors_, _buses_ and _mediators_ form the three main categories of modules in Comunica.
