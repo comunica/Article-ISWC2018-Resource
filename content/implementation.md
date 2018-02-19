@@ -9,7 +9,7 @@ In order to be compatible with existing JavaScript RDF libraries,
 Comunica is fully compatible with the JavaScript API specification by the [RDFJS community group](https://www.w3.org/community/rdfjs/){:.mandatory}.
 Finally, we provide detailed documentation for the usage and development with [Comunica](https://comunica.readthedocs.io){:.mandatory}.
 
-We provide a default configuration file with all available actors for evaluating (federated) SPARQL queries over heterogeneous sources.
+We provide a default Linked Data-based configuration file with all available actors for evaluating (federated) SPARQL queries over heterogeneous sources.
 This allows SPARQL queries to be evaluated using a command line tool,
 a webservice implementing the [SPARQL protocol](cite:cites spec:sparqlprot),
 from within a JavaScript application,
