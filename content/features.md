@@ -29,7 +29,7 @@ The TPF-client and Comunica on the other hand support running in browsers out-of
 | TPF-client+           | ✓          |     | ✓        |
 | Heterogeneous sources |            | ~   | ✓        |
 | Environment-agnostic  | ✓          | ~   | ✓        |
-| Linked Data-based     | ✓          |     | ✓        |
+| Linked Data-based     |            |     | ✓        |
 
 <figcaption markdown="block">
 Comparison of the availability of the main features of Comunica in similar works.
