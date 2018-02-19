@@ -21,7 +21,8 @@ They are implemented as different diverged _forks_ of the original client,
 and it is not trivial to harmonize them.
 This is because the TPF client is too dedicated to TPF entrypoints,
 i.e., it was not designed with extensions or adaptations in mind.
-Therefore, the TPF client is not able to embrace the complete LDF vision of a client that embraces heterogeneity of interfaces.
+Therefore, the TPF client is not able to embrace the complete LDF vision of a client that embraces heterogeneity of interfaces,
+and there is a need for a more flexible client in which modules can be plugged to support different types of interfaces or algorithms.
 
 In this article, we introduce _Comunica_ as a query client that truly embraces this LDF vision.
 It is a highly _modular_ SPARQL engine for _federated_ _SPARQL query_ evaluation over _heterogeneous interfaces_,
