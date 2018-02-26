@@ -3,36 +3,59 @@
 
 In this section, we discuss the main features of the Comunica engine,
 with the aim of making it a flexible and easy-to-use successor of the TPF client for the Semantic Web research community.
+Furthermore, we discuss each feature based on the availability in related work.
 
-* **SPARQL query evaluation**: SPARQL queries should be evaluatable.
-* **Modular**: Adding new functionality or changing certain operations requires minimal to no changes to existing code. Furthermore, the Comunica environment is developer-friendly, including well documented APIs and auto-generation of stub code. New modules are registrable via a configuration file.
-* **Succession of the TPF client**: Comunica has at least all of the functionality of the TPF client, which means that it supports client-side SPARQL querying over one or more TPF entrypoints. In this work, we will show that Comunica is not significantly slower than the TPF client for SPARQL query evaluation over TPF entrypoints.
-* **Heterogeneous sources**: Next to support for querying over TPF entrypoints, Comunica is also enable combined federated querying over other sources, with at least support for SPARQL endpoints and data dumps in RDF serializations.
-* **Environment-agnostic**: Comunica is able to run in different kinds of environments, including Web browsers, local (JavaScript) runtime engines and command-line interfaces.
-* **Linked Data-based**: In order to take full advantage of the Linked Data stack, modules are describable, configurable and wireable in RDF.
+The following main features of Comunica will be discussed and summarized hereafter:
 
-In [](#features-comparison), we compare the availability of these features in similar works.
-ARQ only partially adheres to the _heterogeneous sources_ feature as defined in this section.
-While ARQ supports different types of sources to be configured based on a Java interface,
-ARQ does not allow federation over these different sources, it only allows federation over SPARQl endpoints.
-Furthermore, ARQ also only partially adheres to the _environment-agnostic_ feature.
-That is because running ARQ in a browser would require a custom Java applet,
-which is not a native Web technology.
-The TPF-client and Comunica on the other hand support running in browsers out-of-the-box.
+* **SPARQL query evaluation**
+* **Modular**
+* **Heterogeneous interfaces**
+* **Environment-agnostic**
+
+### SPARQL query evaluation
+
+The most important feature of a SPARQL engine is its ability to evaluate SPARQL queries.
+At the time of writing, the TPF-client, rdflib.js, rdfstore-js, and Comunica support SPARQL 1.0, and a subset of SPARQL 1.1.
+ARQ and RDFLib are fully SPARQL 1.1 compliant.
+
+### Modular
+
+Adding new functionality or changing certain operations in Comunica requires minimal to no changes to existing code.
+Furthermore, the Comunica environment is developer-friendly, including well documented APIs and auto-generation of stub code.
+In order to take full advantage of the Linked Data stack, modules in Comunica are describable, configurable and wireable in RDF.
+By registering or excluding modules from a configuration file, the user is free to choose how heavy or lightweight its query engine will be.
+ARQ, RDFLib, rdflib.js and rdfstore-js only support customization by implementing a custom query engine programmatically to handle operators.
+They do not allow plugging in or out certain modules.
+
+### Heterogeneous interfaces
+
+Next to support for querying over TPF entrypoints, Comunica also enables combined federated querying over other sources,
+with at least support for SPARQL endpoints and data dumps in RDF serializations.
+ARQ, RDFLib, rdflib.js and rdfstore-js only support federation over SPARQL endpoints using the SERVICE keyword.
+The TPF client only supports federation over TPF entrypoints.
+
+### Environment-agnostic
+
+Comunica is able to run in different kinds of environments, including Web browsers, local (JavaScript) runtime engines and command-line interfaces,
+just like the TPF-client.
+ARQ, RDFLib, rdflib.js and rdfstore-js are able to run in their language's runtime and via a command-line interface, but not from within Web browsers.
+ARQ would be able to run in browsers using a custom Java applet, which is not a native Web technology.
+
+### Summary
+
+In [](#features-comparison), we summarize the availability of these features in similar works.
 
 <figure id="features-comparison" class="table" markdown="1">
 
-| Feature               | TPF-client | ARQ | Comunica |
-| --------------------- |------------|-----|----------|
-| SPARQL                | ✓*         | ✓   | ✓*       |
-| Modular               |            |     | ✓        |
-| TPF-client+           | ✓          |     | ✓        |
-| Heterogeneous sources |            | ~   | ✓        |
-| Environment-agnostic  | ✓          | ~   | ✓        |
-| Linked Data-based     |            |     | ✓        |
+| Feature                  | TPF-client | ARQ | RDFLib | rdflib.js | rdfstore-js | Comunica |
+| ------------------------ |------------|-----|--------|-----------|-------------|----------|
+| SPARQL                   | ✓*         | ✓   | ✓      | ✓*        | ✓*          | ✓*       |
+| Modular                  |            |     |        |           |             | ✓        |
+| Heterogeneous interfaces |            |     |        |           |             | ✓        |
+| Environment-agnostic     | ✓          |     |        |           |             | ✓        |
 
 <figcaption markdown="block">
 Comparison of the availability of the main features of Comunica in similar works.
-(*) At the time of writing, the TPF-client and Comunica support SPARQL 1.0, and a subset of SPARQL 1.1.
+(*) Only a subset of SPARQL 1.1 is supported.
 </figcaption>
 </figure>

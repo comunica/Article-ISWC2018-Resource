@@ -52,16 +52,18 @@ It is able to retrieve data over HTTP from TPF entrypoints using triple patterns
 But it can not directly interact with other types of datasources.
 Furthermore, the TPF client is built for the Web, as it can run in any JavaScript environment, such as the browser.
 
-[Jena](cite:cites jena) is an open source Java framework for handling Linked Data.
-It contains the ARQ API, which is a SPARQL 1.1 compliant query engine.
-ARQ is not coupled to a specific datasource,
-instead, in-memory models or other sources such as Jena TDB can be used.
-Jena Fuseki is an implementation of the SPARQL protocol using this framework.
-ARQ is similar to the Comunica engine that we propose, but it is different on 3 different levels:
-
-1. ARQ is a Java engine, while Comunica is built for the Web, i.e., it is implemented in JavaScript.
-2. Comunica is modular and supports declarative module injection, while ARQ only supports customization by implementing a custom query engine programmatically to handle operators.
-3. ARQ supports federation over SPARQL endpoints, while Comunica supports federated query evaluation over heterogeneous interfaces, including not only SPARQL endpoints, but also TPF entrypoints and more.
+[Jena](cite:cites jena), [RDFLib](cite:cites rdflib), [rdflib.js](cite:cites rdflibjs) and [rdfstore-js](cite:cites rdfstorejs)
+are frameworks for handling RDF data and include a SPARQL engine API.
+Jena is a Java framework, RDFLib is a python package, and rdflib.js and rdfstore-js are JavaScript modules.
+Jena, or more specifically the ARQ API, and RDFLib are fully SPARQL 1.1 compliant.
+rdflib.js and rdfstore-js both support a subset of SPARQL 1.1.
+Furthermore, rdflib.js and rdfstore-js only support the Node.js environment, they can not be used from within a browser.
+These SPARQL engines are not coupled to a specific datasource,
+instead, in-memory models or other sources can be used, such as Jena TDB in the case of ARQ.
+These SPARQL engine APIs are similar to the Comunica engine that we propose,
+but they main difference is that they are not modular,
+they do not support heterogeneous interfaces,
+and they do not run natively in Web browsers.
 
 ### Software design patterns
 
