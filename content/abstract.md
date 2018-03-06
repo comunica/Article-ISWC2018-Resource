@@ -2,10 +2,10 @@
 <!-- Context      -->
 The Linked Open Data cloud keeps growing, and so does the number of different types of Linked Data retrieval interfaces.
 Such interfaces include raw data dumps, SPARQL endpoints, TPF entrypoints, and variants.
-In order to query the Linked Data that is contained in all of these different source types,
+In order to query the Linked Data that is contained in all of these different types of sources,
 <!-- Need         -->
 there is a need for an engine that is able to query over such heterogeneous interfaces,
-and where new kinds of interfaces can be tested for research-purposes.
+and where support for new kinds of interfaces can be added and tested for research-purposes.
 <!-- Task         -->
 As such, we designed and developed a Web-friendly and modular engine that is able to perform federated querying over heterogeneous sources.
 <!-- Object       -->
