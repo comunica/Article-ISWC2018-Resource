@@ -41,5 +41,6 @@ on GitHub and the npm package manager (TODO: add links) under an open-source lic
 
 This article is structure as follows:
 In the next section, we discuss the related work, followed by a listing of the requirements for Comunica in [](#requirements).
-After that, we dicuss the architecture of Comunica in [](#architecture) and its implementation in [](#implementation).
+After that, we dicuss the architecture of Comunica in [](#architecture), its implementation in [](#implementation),
+and an overview of its differences with the TPF client in [](#comparison-tpf-client).
 Finally, [](#conclusions) concludes and contains opportunities for future work.

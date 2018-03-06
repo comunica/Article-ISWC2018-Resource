@@ -25,5 +25,3 @@ At the time of writing, we support querying over the following types of datasour
 * Local and remote dataset dumps in RDF serializations.
 * [HDT datasets](cite:cites hdt)
 * [Versioned OSTRICH datasets](cite:cites ostrich)
-
-TODO: preliminary evaluation
