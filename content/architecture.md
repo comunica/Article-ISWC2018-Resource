@@ -13,11 +13,11 @@ Finally, we give an overview of all modules
 The modules in comunica work together based on the [_actor_](cite:cites actormodel),
 [_mediator_](cite:cites mediatorpattern) and [_publish-subscribe_](cite:cites publishsubscribepattern) patterns.
 Any number of _actor_ modules can be created,
-where each actor interact with _mediators_, that in its turn invoke other actors that are registered to a certain _bus_.
+where each actor interacts with _mediators_, that in its turn invoke other actors that are registered to a certain _bus_.
 _Actors_, _buses_ and _mediators_ form the three main categories of modules in Comunica.
 
 Actors are the main computational units in Comunica, and buses and mediators form the _glue_ that ties them together and makes them interactable.
-They are responsible for being able to accept certain messages via the bus they are subscribed to and replying with an answer.
+Actors are responsible for being able to accept certain messages via the bus they are subscribed to and replying with an answer.
 Separate buses exist for different message types.
 For example, a bus can exist with multiple registered actors for parsing triples in a certain RDF serialization to triple objects,
 or another bus can contain actors that join query bindings together in a certain way.
@@ -108,7 +108,7 @@ we allow a list of sources, annotated by type, to be passed when a query is init
 These sources are passed down through the chain of query operation actors,
 until the quad pattern level is reached.
 At this level, different actors exist for handling a single source of a certain type,
-such as TPF entrypoints, SPARQL endpoints, local or remote datadumps or [HDT](cite:cites hdt) files.
+such as TPF entrypoints, SPARQL endpoints, local or remote datadumps.
 In the case of multiple sources, one actor exists that implements the federation algorithm of the [TPF client](cite:cites ldf),
 but instead of federating over different TPF entrypoints, it federates over different single-source quad pattern actors.
 
