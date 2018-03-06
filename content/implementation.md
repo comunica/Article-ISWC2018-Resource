@@ -17,4 +17,13 @@ or within the browser.
 Just like the TPF client, we fully support [SPARQL 1.0](cite:cites spec:sparqllang1) and a subset of [SPARQL 1.1](cite:cites spec:sparqllang) at the time of writing.
 In future work, we intend to implement additional actors for supporting SPARQL 1.1 completely.
 
+At the time of writing, we support querying over the following types of datasources and interfaces:
+
+* [Triple Pattern Fragments entrypoints](cite:cites ldf)
+* Quad Pattern Fragments entrypoints ([an experimental extension of TPF with a fourth graph element](https://github.com/LinkedDataFragments/Server.js/tree/feature-qpf-latest){:.mandatory})
+* [SPARQL endpoints](cite:cites spec:sparqlprot)
+* Local and remote dataset dumps in RDF serializations.
+* [HDT datasets](cite:cites hdt)
+* [Versioned OSTRICH datasets](cite:cites ostrich)
+
 TODO: preliminary evaluation
