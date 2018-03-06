@@ -25,3 +25,7 @@ At the time of writing, we support querying over the following types of datasour
 * Local and remote dataset dumps in RDF serializations.
 * [HDT datasets](cite:cites hdt)
 * [Versioned OSTRICH datasets](cite:cites ostrich)
+
+In the future, we will also look into adding support for other interfaces such as
+[brTPF](cite:cites brtpf) for more efficient join operations
+and [VTPF](cite:cites vtpf) for queries over versioned datasets.
