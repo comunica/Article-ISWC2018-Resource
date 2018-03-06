@@ -7,6 +7,7 @@ Not only can Comunica be used as a client-side SPARQL engine, it can also be cus
 such as for example only evaluating BGPs over Turtle files,
 evaluating the efficiency of different join operators,
 or even serve as a complete server-side SPARQL query endpoint that aggregates different datasources.
+In future work, we will look into supporting supporting alternative (non-semantic) query languages as well, such as [GraphQL](cite:cites graphql).
 
 Since Comunica is built on Linked Data and Web technologies,
 it is the ideal research platform for investigating new Linked Data publication interfaces,
