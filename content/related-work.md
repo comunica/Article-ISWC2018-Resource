@@ -43,13 +43,13 @@ Comunica is an engine that is independent of an RDF store,
 but for the sake of completeness, we also mention works _with_ a coupled store.
 
 Most of the existing SPARQL engines are coupled with an internal store.
-This can either be native a RDF store, such as for [AllegroGraph](cite:cites allegrograph) or [Blazegraph](cite:cites blazegraph),
+This can either be a native RDF store, such as for [AllegroGraph](cite:cites allegrograph) or [Blazegraph](cite:cites blazegraph),
 or a non-RDF store can be used, such as for [Virtuoso](cite:cites virtuoso) that is a Object-Relational Database Management System
 and evaluates SPARQL queries by translating them into SQL.
 
 The [Triple Pattern Fragments client](cite:cites ldf) is a client-side SPARQL engine that is decoupled from an RDF store.
-It is able to retrieve data over HTTP from TPF entrypoints using triple patterns.
-But it can not directly interact with other types of datasources.
+It is able to retrieve data over HTTP from TPF entrypoints using triple pattern queries.
+It can however not directly interact with other types of datasources.
 Furthermore, the TPF client is built for the Web, as it can run in any JavaScript environment, such as the browser.
 
 [Jena](cite:cites jena), [RDFLib](cite:cites rdflib), [rdflib.js](cite:cites rdflibjs) and [rdfstore-js](cite:cites rdfstorejs)
@@ -61,7 +61,7 @@ Furthermore, rdflib.js and rdfstore-js only support the Node.js environment, the
 These SPARQL engines are not coupled to a specific datasource,
 instead, in-memory models or other sources can be used, such as Jena TDB in the case of ARQ.
 These SPARQL engine APIs are similar to the Comunica engine that we propose,
-but they main difference is that they are not modular,
+but the main difference is that they are not modular,
 they do not support heterogeneous interfaces,
 and they do not run natively in Web browsers.
 
