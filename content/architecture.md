@@ -91,6 +91,10 @@ This actor is linked to a mediator with a bus containing two RDF parsers for spe
 </figcaption>
 </figure>
 
+While the primary goal of these configuration files is to initialize a Comunica engine,
+these files can also be used as a semantic description of the engine.
+This description can for example be referenced when linking benchmark results to the used engines in a machine-readable format.
+
 ### Modules
 
 At the time of writing, comunica consists of 72 different modules.

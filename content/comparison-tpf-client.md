@@ -14,6 +14,6 @@ As the main goal of Comunica is modularity, and not performance, we do not compa
 
 ### Performance
 
-TODO: discuss setup, exact versions and configuration
+TODO: discuss setup, exact versions (LSD-way) and configuration
 
 TODO: include plot, and discuss results
