@@ -1,6 +1,9 @@
 ## Introduction
 {:#introduction}
 
+{:.comment data-author="MVS"}
+I think the build up should be like: Linked Data publishing -> many interfaces -> LDF -> embrace Web and heterogeneity -> modular client in JS. Now, it is written from the old limited client perspective, as we experienced it, but we shouldn't sell it that way.
+
 The number of datasets that are available in the [Linked Open Data](cite:cites linkeddata) cloud is [continuously increasing](cite:cites linkeddataadoption).
 As of February 2018, the [LODStats project](cite:cites lodstats) reports 2,973 available datasets containing more than 149 billion triples.
 This Linked Data is being published in different ways, such as
@@ -37,14 +40,24 @@ with the aim to serve as a flexible research platform for experimenting with new
 Might be interesting to re-iterate these points in the related work
 and show what the similar systems are missing?
 
+{:.comment data-author="MVS"}
++1
+
 Comunica is unlike similar works on different levels:
 
 1. The **modularity** of Comunica allows for easy _extensions_ and _customization_. Furthermore, modules can be added and removed using an RDF configuration file, which makes it possible for users to build and finetune their own engine.
+
+{:.comment data-author="MVS"}
+I would also mention the granularity in which this is possible: algorithms, implementations, etc.
+
 2. Within Comunica, multiple **heterogeneous** interfaces are a first class citizen. This enables federated querying over heterogeneous sources and makes it for example possible to evaluate queries over any combination of SPARQL endpoints, TPF entrypoints, datadumps or other types of interfaces.
 3. Comunica is implemented for the **Web** in JavaScript, which makes it possible to use it in a browser, from the command line, via the [SPARQL protocol](cite:cites spec:sparqlprot), or from any JavaScript application.
 
 In order to encourage reusability, Comunica and its default modules are publicly available
 on GitHub and the npm package manager (TODO: add links) under an open-source license.
+
+{:.comment data-author="MVS"}
+Which license?
 
 This article is structured as follows:
 In the next section, we discuss the related work, followed by a listing of the features of Comunica in [](#features).
