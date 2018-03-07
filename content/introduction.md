@@ -16,6 +16,9 @@ including [server interface extensions](cite:cites brtpf, vtpf, tpfamf, tpfsubst
 Most of these works include an adaptation of the TPF client (also known as Client.js or `ldf-client`), the default implementation of
 the TPF algorithm for federated evaluation of SPARQL queries using TPF entrypoints.
 
+{:.comment data-author="JVH"}
+Multiple embrace occurrences next to each other.
+
 These client adaptations clients are however not fully compatible with each other.
 They are implemented as different diverged _forks_ of the original client,
 and it is not trivial to harmonize them.
@@ -30,6 +33,10 @@ including TPF entrypoints, SPARQL endpoints and data dumps.
 Comunica thereby positions itself as the successor of the TPF client,
 with the aim to serve as a flexible research platform for experimenting with new Linked Data querying and publication techniques.
 
+{:.comment data-author="JVH"}
+Might be interesting to re-iterate these points in the related work
+and show what the similar systems are missing?
+
 Comunica is unlike similar works on different levels:
 
 1. The **modularity** of Comunica allows for easy _extensions_ and _customization_. Furthermore, modules can be added and removed using an RDF configuration file, which makes it possible for users to build and finetune their own engine.
@@ -39,8 +46,8 @@ Comunica is unlike similar works on different levels:
 In order to encourage reusability, Comunica and its default modules are publicly available
 on GitHub and the npm package manager (TODO: add links) under an open-source license.
 
-This article is structure as follows:
-In the next section, we discuss the related work, followed by a listing of the requirements for Comunica in [](#requirements).
-After that, we dicuss the architecture of Comunica in [](#architecture), its implementation in [](#implementation),
+This article is structured as follows:
+In the next section, we discuss the related work, followed by a listing of the features of Comunica in [](#features).
+After that, we discuss the architecture of Comunica in [](#architecture), its implementation in [](#implementation),
 and an overview of its differences with the TPF client in [](#comparison-tpf-client).
 Finally, [](#conclusions) concludes and contains opportunities for future work.
