@@ -16,4 +16,16 @@ As the main goal of Comunica is modularity, and not performance, we do not compa
 
 TODO: discuss setup, exact versions (LSD-way) and configuration
 
-TODO: include plot, and discuss results
+<figure id="performance-average">
+<center>
+<img src="img/avg.svg" alt="[performance-average]" class="plot">
+<br />
+<img src="img/avg_c23.svg" alt="[performance-average]" class="plot">
+</center>
+<figcaption markdown="block">
+Average query evaluation times for the TPF client and Comunica for all queries.
+C2 and C3 are shown separately because of their longer evaluation times.
+</figcaption>
+</figure>
+
+TODO: discuss results
