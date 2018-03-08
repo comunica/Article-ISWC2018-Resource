@@ -55,30 +55,30 @@
 
 \newenvironment{resultAxis}{
 \begin{axis}[
-    xbar=1pt,
-    ytick=data,
-    height=25pt,
-    width=144pt,
-    xmin=0,
+    ybar=1pt,
+    xtick=data,
+    width=25pt,
+    height=144pt,
+    ymin=0,
     bar width=3pt,
-    enlarge y limits={abs=5pt},
-    symbolic y coords={C2, C3},
+    enlarge x limits={abs=5pt},
+    symbolic x coords={C2, C3},
     % Don't show axis exponent
-    xtick scale label code/.code={},
-    scaled x ticks=false,
-    y axis line style=-,
+    ytick scale label code/.code={},
+    scaled y ticks=false,
+    x axis line style=-,
     reverse legend,
     scale only axis,
     clip=false,
     axis on top,
     area legend,
-    xlabel={Duration (sec)}
+    ylabel={Duration (sec)}
 ]
 }{\end{axis}}
 \begin{tikzpicture}
 \begin{resultAxis}
-\addplot+[xbar] table [y=name, x=ldf_time, col sep=semicolon]{content/img//avg_c23.csv};
-\addplot+[xbar] table [y=name, x=comunica_time, col sep=semicolon]{content/img//avg_c23.csv};
+\addplot+[ybar] table [x=name, y=ldf_time, col sep=semicolon]{content/img/avg_c23.csv};
+\addplot+[ybar] table [x=name, y=comunica_time, col sep=semicolon]{content/img/avg_c23.csv};
 \legend{}
 \end{resultAxis}
 \end{tikzpicture}

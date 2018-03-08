@@ -22,7 +22,6 @@ TODO: discuss setup, exact versions (LSD-way: exact versions in RDF) and configu
 <figure id="performance-average">
 <center>
 <img src="img/avg.svg" alt="[performance-average]" class="plot">
-<br />
 <img src="img/avg_c23.svg" alt="[performance-average]" class="plot">
 </center>
 <figcaption markdown="block">

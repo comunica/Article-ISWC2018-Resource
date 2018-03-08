@@ -134,7 +134,8 @@ img {
   vertical-align: middle;
 }
 img.plot {
-  width: 20em !important;
+  width: auto !important;
+  height: 10em !important;
 }
 
 object.slides { display:none; }
