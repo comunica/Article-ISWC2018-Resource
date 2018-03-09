@@ -17,7 +17,32 @@ Hereafter, we compare the performance of the TPF client and Comunica
 and discover that Comunica in most cases outperforms the TPF client.
 As the main goal of Comunica is modularity, and not performance, we do not compare with similar frameworks such as ARQ and RDFLib.
 
-TODO: discuss setup, exact versions (LSD-way: exact versions in RDF) and configuration
+For the setup of this evaluation we made use of a single machine (Intel Core i5-3230M CPU at 2.60 GHz with 8 GB of RAM), running both Server and Client. The main goal of this evaluation was to determine the performance impact of the new implementation, while keeping all other variables constant. We used the following <a about="#evaluation-workflow" content="Comunica evaluation workflow" href="#evaluation-workflow" property="rdfs:label" rel="cc:license" resource="https://creativecommons.org/licenses/by/4.0/">workflow</a>:
+
+<ol id="evaluation-workflow" property="schema:hasPart" resource="#evaluation-workflow" typeof="opmw:WorkflowTemplate" markdown="1">
+<li id="workflow-data" about="#workflow-data" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#evaluation-workflow" property="rdfs:label" markdown="1">
+  Generate a [WatDiv](cite:cites watdiv) dataset with scale factor=100.
+</li>
+<li id="workflow-queries" about="#workflow-queries" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#evaluation-workflow" property="rdfs:label" markdown="1">
+  Generate the corresponding default WatDiv [queries](https://github.com/comunica/test-comunica/tree/master/sparql/watdiv-10M){:.mandatory} with query-count=5.
+</li>
+<li id="workflow-tpf-server" about="#workflow-tpf-server" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#evaluation-workflow" property="rdfs:label" markdown="1">
+  Install [the server software configuration](https://linkedsoftwaredependencies.org/raw/ldf-availability-experiment-config.jsonld){:.mandatory}, implementing the [TPF specification](https://www.hydra-cg.com/spec/latest/triple-pattern-fragments/){:.mandatory}, with its [dependencies](https://linkedsoftwaredependencies.org/raw/ldf-availability-experiment-setup.ttl){:mandatory}.
+</li>
+<li id="workflow-tpf-client" about="#workflow-tpf-client" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#evaluation-workflow" property="rdfs:label" markdown="1">
+  Install [the client software configuration](https://github.com/LinkedDataFragments/Client.js){:.mandatory}, implementing the [SPARQL 1.1 protocol](https://www.w3.org/TR/sparql11-protocol){:mandatory}, with its [dependencies](https://linkedsoftwaredependencies.org/raw/ldf-availability-experiment-client.ttl){:.mandatory}.
+</li>
+<li id="workflow-tpf-run" about="#workflow-tpf-run" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#evaluation-workflow" property="rdfs:label" markdown="1">
+  Execute the generated WatDiv queries 3 times on the TPF client, after doing a warmup run, and record the execution times [results](https://github.com/comunica/test-comunica/blob/master/results/watdiv-ldf.csv).
+</li>
+<li id="workflow-comunica" about="#workflow-comunica" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#evaluation-workflow" property="rdfs:label" markdown="1">
+  Install [the Comunica software configuration](https://github.com/comunica/comunica/blob/master/packages/actor-init-sparql/config/config-default.json){:.mandatory}, implementing the [SPARQL 1.1 protocol](https://www.w3.org/TR/sparql11-protocol){:mandatory}, with its [dependencies](){:.mandatory}.
+  (TODO: Add dependencies)
+</li>
+<li id="workflow-comunica-run" about="#workflow-comunica-run" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#evaluation-workflow" property="rdfs:label" markdown="1">
+  Execute the generated WatDiv queries 3 times on the Comunica client, after doing a warmup run, and record the execution times [results](https://github.com/comunica/test-comunica/blob/master/results/watdiv-comunica.csv).
+</li>
+</ol>
 
 <figure id="performance-average">
 <center>
