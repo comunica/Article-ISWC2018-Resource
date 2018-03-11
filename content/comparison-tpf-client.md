@@ -17,7 +17,11 @@ Hereafter, we compare the performance of the TPF client and Comunica
 and discover that Comunica in most cases outperforms the TPF client.
 As the main goal of Comunica is modularity, and not performance, we do not compare with similar frameworks such as ARQ and RDFLib.
 
-For the setup of this evaluation we made use of a single machine (Intel Core i5-3230M CPU at 2.60 GHz with 8 GB of RAM), running both Server and Client. The main goal of this evaluation was to determine the performance impact of the new implementation, while keeping all other variables constant. We used the following <a about="#evaluation-workflow" content="Comunica evaluation workflow" href="#evaluation-workflow" property="rdfs:label" rel="cc:license" resource="https://creativecommons.org/licenses/by/4.0/">workflow</a>:
+For the setup of this evaluation we made use of a single machine (Intel Core i5-3230M CPU at 2.60 GHz with 8 GB of RAM),
+running the Linked Data Fragments server with a [HDT-backend](cite:cites hdt) and the TPF client or Comunica.
+The main goal of this evaluation was to determine the performance impact of the new implementation,
+while keeping all other variables constant.
+We used the following <a about="#evaluation-workflow" content="Comunica evaluation workflow" href="#evaluation-workflow" property="rdfs:label" rel="cc:license" resource="https://creativecommons.org/licenses/by/4.0/">workflow</a>:
 
 <ol id="evaluation-workflow" property="schema:hasPart" resource="#evaluation-workflow" typeof="opmw:WorkflowTemplate" markdown="1">
 <li id="workflow-data" about="#workflow-data" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#evaluation-workflow" property="rdfs:label" markdown="1">
