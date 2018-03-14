@@ -8,6 +8,10 @@ validates this flexibility and modularity, as the TPF client only supports query
 The current implementation of Comunica has all of the functionality of the TPF client, and supersedes it.
 Finally, Comunica achieves similar performance compared to the TPF client, as will be shown hereafter.
 
+{:.comment data-author="MVS"}
+This section makes we wonder is the feature comparison with other frameworks should be moved here.
+
+
 ### Performance
 
 Next to a functional completeness, it is also desired that Comunica achieves similar *performance* compared to the TPF client.
@@ -58,6 +62,9 @@ Average query evaluation times for the TPF client and Comunica for all queries.
 C2 and C3 are shown separately because of their higher evaluation times.
 </figcaption>
 </figure>
+
+{:.comment data-author="MVS"}
+Like we discussed, needs same-algorithm results as well and clearly explain this. 
 
 The results from [](#performance-average) show that Comunica is able to achieve similar,
 and in most cases even better performance than the TPF client.

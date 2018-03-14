@@ -2,10 +2,18 @@
 {:#features}
 
 In this section, we discuss the main features of the Comunica engine,
+
+{:.comment data-author="MVS"}
+It's a resources paper, so it's already made
+
 with the aim of making it a flexible and easy-to-use successor of the TPF client for the Semantic Web research community.
 Furthermore, we discuss each feature based on the availability in related work.
 
 The following main features of Comunica will be discussed and summarized hereafter:
+
+{:.comment data-author="MVS"}
+- Explain these briefly, for instance by using first sentence of each subsection
+- the general explanation could use more depth
 
 * **SPARQL query evaluation**
 * **Modular**

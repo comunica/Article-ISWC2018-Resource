@@ -8,7 +8,13 @@ We first discuss the main design patterns that are used within Comunica.
 After that, we talk about the wiring of modules based on dependency-injection.
 Finally, we give an overview of all modules
 
+{:.comment data-author="MVS"}
+Put  figure 1 aligned with the figures on the design patterns here!
+
 ### Actor-Mediator-Bus Pattern
+
+{:.comment data-author="MVS"}
+I'd structure this section more and add schematic examples for each one (or connect better to Figure 1). This is the core of your framework
 
 The modules in comunica work together based on the [_actor_](cite:cites actormodel),
 [_mediator_](cite:cites mediatorpattern) and [_publish-subscribe_](cite:cites publishsubscribepattern) patterns.
