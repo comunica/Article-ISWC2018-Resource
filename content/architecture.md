@@ -6,15 +6,9 @@ In summary, Comunica is collection of small modules that, when wired together,
 are able to perform a certain task, such as evaluating SPARQL queries.
 We first discuss the main design patterns that are used within Comunica.
 After that, we talk about the wiring of modules based on dependency-injection.
-Finally, we give an overview of all modules
-
-{:.comment data-author="MVS"}
-Put  figure 1 aligned with the figures on the design patterns here!
+Finally, we give an overview of all modules.
 
 ### Actor-Mediator-Bus Pattern
-
-{:.comment data-author="MVS"}
-I'd structure this section more and add schematic examples for each one (or connect better to Figure 1). This is the core of your framework
 
 The modules in comunica work together based on the [_actor_](cite:cites actormodel),
 [_mediator_](cite:cites mediatorpattern) and [_publish-subscribe_](cite:cites publishsubscribepattern) patterns.
@@ -22,36 +16,8 @@ Any number of _actor_ modules can be created,
 where each actor interacts with _mediators_, that in its turn invoke other actors that are registered to a certain _bus_.
 _Actors_, _buses_ and _mediators_ form the three main categories of modules in Comunica.
 
-Actors are the main computational units in Comunica, and buses and mediators form the _glue_ that ties them together and makes them interactable.
-Actors are responsible for being able to accept certain messages via the bus they are subscribed to and replying with an answer.
-Separate buses exist for different message types.
-For example, a bus can exist with multiple registered actors for parsing triples in a certain RDF serialization to triple objects,
-or another bus can contain actors that join query bindings together in a certain way.
-
-Each actor handles messages in two phases: the _test_ phase and the _run_ phase.
-The test phase is used to check if the actor is _able to act_ on a certain type of message,
-and if so, what are the conditions under which this action can be performed.
-This phase must always come before the run phase, and is used to select which actor is best suited to perform a certain task under certain conditions.
-If such an actor is determined, the run phase of a single actor is initiated.
-This run phase takes this same type of message, and requires to _effectively act_ on this message,
-and return the result of this action.
-For example, in the case of RDF parsers, the test phase could be used to check the time and memory requirements of a certain parser.
-One parser could be very fast but require a lot of memory,
-while another parser could be slower, but require less memory.
-Under certain conditions, the optimal parser could be selected based on these parameters.
-
-More complex actors can require the functionality of other types of actors.
-For example, a SPARQL query evaluation actor can require the functionality of actors that join streams of bindings.
-In order to avoid tight-coupling between such actors, a certain type of _mediator_ is called with a message instead.
-Each mediator is linked with a single bus.
-When a mediator receives a message, it is responsible for replying this this message by using the actors in some way from the registered bus.
-For example, a mediator could exist over the RDF parsers bus and be programmed to always pick the parser that will perform a certain task the fastest.
-When this mediator receives a message, it has to send the message to all actors in the bus to invoke their test phases.
-Based on their responses, the mediator could determine the actor with the lowest time requirements.
-After that, the mediator invokes the run phase of this actor, and returns its response.
-More complex mediators could exist that take combine responses of certain responses.
-
 [](#actor-mediator-bus) shows an example logic flow between actors through a mediator and a bus.
+The relation between these components, their phases and the chaining of them will be explained hereafter.
 
 <figure id="actor-mediator-bus">
 <img src="img/actor-mediator-bus.svg" alt="[actor-mediator-bus pattern]">
@@ -62,6 +28,59 @@ The test replies are then collected by the Mediator, and it chooses the best act
 Finally, the Mediator sends the original action to Actor 3, and returns its response to Actor 0.
 </figcaption>
 </figure>
+
+#### Relation between Actors and Buses
+
+Actors are the main computational units in Comunica, and buses and mediators form the _glue_ that ties them together and makes them interactable.
+Actors are responsible for being able to accept certain messages via the bus they are subscribed to and replying with an answer.
+Separate buses exist for different message types.
+[](#relation-actor-bus) shows an example of how actors can be registered to buses.
+
+<figure id="relation-actor-bus">
+<img src="img/relation-actor-bus.svg" alt="[relation between actors and buses]">
+<figcaption markdown="block">
+An example of two different buses each having two subscribed actors.
+The left bus has different actors for parsing triples in a certain RDF serialization to triple objects.
+The right bus has actors that join query bindings streams together in a certain way.
+</figcaption>
+</figure>
+
+#### Mediators handle Actor Run and Test Phases
+
+Each mediator is connected to a single bus, and its goal is to determine and invoke the *best* actor for a certain task.
+The definition of '*best*' depends on the mediator, and different implementations can lead to different choices in different scenarios.
+A mediator works in two phases: the _test_ phase and the _run_ phase.
+The test phase is used to check which actors on the bus are _able to act_ on a certain type of message,
+and if so, what are the conditions under which this action can be performed.
+This phase must always come before the run phase, and is used to select which actor is best suited to perform a certain task under certain conditions.
+If such an actor is determined, the run phase of a single actor is initiated.
+This run phase takes this same type of message, and requires to _effectively act_ on this message,
+and return the result of this action.
+[](#run-test-phases) shows an example of a mediator invoking a run and test phase.
+
+<figure id="run-test-phases">
+<img src="img/run-test-phases.svg" alt="[mediators handle actor run and test phases]">
+<figcaption markdown="block">
+Example sequence diagram of a mediator that chooses the fastest actor
+on a parse bus with two subscribed actors.
+The first parser is very fast but requires a lot of memory,
+while the second parser is slower, but requires less memory.
+The mediator first calls the _tests_ the actors for the action, and then _runs_ the action using the _best_ actor.
+</figcaption>
+</figure>
+
+#### Chaining of Actors
+
+More complex actors can require the functionality of other types of actors.
+Instead of letting actors call each other immediately, actors must call mediators instead,
+as is shown in the interaction in [](#actor-mediator-bus).
+This makes actors loosely coupled, as they only require a task to be solved by an external actor,
+it does not matter _how_ the task was solved.
+The '_how_' is chosen by the mediator.
+The exact type of mediator can be passed to the actor during intialization,
+so that different mediators can be configured depending on a configuration.
+
+For example, a SPARQL query evaluation actor can require the functionality of actors that join streams of bindings.
 
 ### Dynamic Wiring
 
