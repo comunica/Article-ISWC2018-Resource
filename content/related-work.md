@@ -17,25 +17,13 @@ Choosing an interface to publish a dataset involves a trade-off between server a
 On the one hand, a raw dataset dump can be published by a simple static file server,
 but requires significant effort from clients to query them.
 Before a dump can be queried, it needs to be downloaded first, and then loaded into a local SPARQL engine.
-
-{:.comment data-author="MVS"}
-rephrase next sentence
-
-On the other hand, datasets can be published through a SPARQL endpoint,
-which requires minimal effort from clients,
-but now the server has to do all the work for evaluating the query.
+Datasets can alternatively be published though a SPARQL endpoint,
+which only requires the client to send a query to the server over HTTP after which the server will reply with results.
+SPARQL endpoints however require the server to do all the work for evaluating queries.
 The [Triple Pattern Fragments](cite:cites ldf) interface was introduced as a trade-off
+between data dumps and SPARQL endpoints, where both client and server share the effort of evaluating queries.
 
-{:.comment data-author="MVS"}
-rephrase next part
-
-between the flexibility and large server-load of SPARQL endpoints,
-and the non-flexible, but low-cost publication of datadumps.
-
-{:.comment data-author="MVS"}
-rephrase sentence below
-
-Within the LDF vision, there is no silver bullet,
+When choosing a type of LDF to publish a dataset, there is no silver bullet,
 i.e., there is no single interface that works well in all situations, as each one involves trade-offs.
 As such, data publishers must choose the type of interface that matches their intended use case, target audience and infrastructure.
 This however complicates client-side engines that are supposed to retrieve data from the resulting heterogeneity of interfaces.
@@ -47,23 +35,20 @@ to discover its _controls_ and use it to retrieve data.
 Up until now, no approaches exist that are able to query over interfaces in a heterogeneous manner,
 which is exactly a problem we aim to solve with Comunica.
 
-### SPARQL engines
+### SPARQL frameworks
 
-Comunica is _loosely-coupled_ to any RDF indexing structure,
-but for the sake of completeness, we also mention _tightly-coupled_ SPARQL engines.
-
-{:.comment data-author="MVS"}
-I rewrote this part a bit. The discussion of RDF indexing (native/relational/NoSQL) is convoluted with the distinction between tight/loose coupling. Thar said, if this is all your going to say about tight-coupled SPARQL engines, I wouldn't mention them, and only talk about SPARQL frameworks.   
-
-Such indexing structure can either be a native RDF store, e.g., [AllegroGraph](cite:cites allegrograph) and [Blazegraph](cite:cites blazegraph),
-or a non-RDF store, e.g., [Virtuoso](cite:cites virtuoso) uses a Object-Relational Database Management System
-and evaluates SPARQL queries by translating them into SQL.
-
+Comunica is a SPARQL framework that is _loosely-coupled_ to any RDF indexing structure,
+as opposed to _tightly-coupled_ SPARQL engines such as
+[AllegroGraph](cite:cites allegrograph), [Blazegraph](cite:cites blazegraph), and [Virtuoso](cite:cites virtuoso).
+For the remainder of this section, we only focus on other loosely-coupled SPARQL frameworks.
 
 The [Triple Pattern Fragments client](cite:cites ldf) is a client-side SPARQL engine 
 
 {:.comment data-author="MVS"}
 that not really accurate, it was designed to query LDF APIs, but didn't go beyond TPF yet.
+
+{:.comment data-author="RT"}
+True, but I think we should explain it as it is, not as it was intended.
 
 that is decoupled from an RDF store.
 It is able to retrieve data over HTTP from TPF entrypoints using triple pattern queries.
@@ -71,12 +56,7 @@ It can however not directly interact with other types of datasources.
 Furthermore, the TPF client is built for the Web, as it can run in any JavaScript environment, such as the browser.
 
 [Jena](cite:cites jena), [RDFLib](cite:cites rdflib), [rdflib.js](cite:cites rdflibjs) and [rdfstore-js](cite:cites rdfstorejs)
-are frameworks for handling RDF data and include 
-
-{:.comment data-author="MVS"}
-What's a SPARQL engine API?
-
-a SPARQL engine API.
+are frameworks for handling RDF data and include an API for evaluating SPARQL queries.
 Jena is a Java framework, RDFLib is a python package, and rdflib.js and rdfstore-js are JavaScript modules.
 Jena, or more specifically the ARQ API, and RDFLib are fully SPARQL 1.1 compliant.
 rdflib.js and rdfstore-js both support a subset of SPARQL 1.1.
@@ -94,8 +74,6 @@ In the following, we discuss three software design patterns that are relevant to
 
 {:.comment data-author="MVS"}
 - I'd add a figure of each pattern, like this: https://realtimeapi.io/wp-content/uploads/2017/09/pubsub-1.png
-- the relation with Comunica should be made more clear for all of them
-
 
 #### Publish–subscribe pattern
 
@@ -104,6 +82,7 @@ Instead of publishers being programmed to send messages directly to subscribers,
 Subscribers can _subscribe_ to these categories which will cause them to receive these published messages, without requiring prior knowledge of the publishers.
 This pattern is useful for decoupling software components from each other,
 and only requiring prior knowledge of message categories.
+We use this pattern in Comunica for allowing different implementations of certain tasks to subscribe to task-specific buses.
 
 #### Actor Model
 
@@ -113,6 +92,7 @@ An actor is a computational unit that performs a specific task, acts on messages
 The main advantages of the actor model are that actors can be independently made to implement certain specific tasks based on messages,
 and that these can be handled asynchronously.
 These characteristics are highly beneficial to the modularity that we want to achieve with Comunica.
+That is why we use this pattern in combination with the publish-subscribe pattern to let each implementation of a certain task correspond to a separate actor.
 
 #### Mediator pattern
 
