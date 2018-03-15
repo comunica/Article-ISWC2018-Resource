@@ -1,16 +1,5 @@
-## Features
+## Feature analysis
 {:#features}
-
-In this section, we discuss the main features of the Comunica engine,
-with the aim of being a flexible and easy-to-use successor of the TPF client for the Semantic Web research community.
-Furthermore, we discuss each feature based on the availability in related work.
-
-The following main features of Comunica will be discussed and summarized hereafter:
-
-* **SPARQL query evaluation**: The engine should be able to understand, process and output results for SPARQL queries.
-* **Modular**: Different independent modules should contain the implementation of specific tasks, and they should be combinable in a flexible framework.
-* **Heterogeneous interfaces**: Different types of datasource interfaces should be supported, and it should be possible to add new types independently.
-* **Web-based**: The engine should be able to run in Web browsers using native Web technologies.
 
 In [](#features-comparison), we summarize the availability of these features in similar works.
 
@@ -31,8 +20,6 @@ Comparison of the availability of the main features of Comunica in similar works
 
 ### SPARQL query evaluation
 
-SPARQL is the standard query language for RDF data.
-Therefore, the most important feature of an RDF query engine is its ability to evaluate SPARQL queries.
 At the time of writing, the TPF-client, rdflib.js, rdfstore-js, and Comunica support SPARQL 1.0, and a subset of SPARQL 1.1.
 ARQ and RDFLib are fully SPARQL 1.1 compliant.
 

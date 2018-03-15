@@ -1,18 +1,10 @@
-## Comparison with TPF client
+## Performance analysis in context to the TPF client
 {:#comparison-tpf-client}
 
 The primary goal of Comunica is to replace the TPF client as a more *flexible* and *modular* alternative,
 with at least the same *functionality* and similar *performance*.
 The fact that Comunica supports multiple heterogeneous interfaces and sources as shown in the previous section
 validates this flexibility and modularity, as the TPF client only supports querying over TPF entrypoints.
-The current implementation of Comunica has all of the functionality of the TPF client, and supersedes it.
-Finally, Comunica achieves similar performance compared to the TPF client, as will be shown hereafter.
-
-{:.comment data-author="MVS"}
-This section makes we wonder is the feature comparison with other frameworks should be moved here.
-
-
-### Performance
 
 Next to a functional completeness, it is also desired that Comunica achieves similar *performance* compared to the TPF client.
 The higher modularity of Comunica is however expected to cause performance overhead,

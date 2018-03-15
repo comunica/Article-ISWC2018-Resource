@@ -34,11 +34,12 @@ including TPF entrypoints, SPARQL endpoints and data dumps.
 Comunica thereby positions itself as the successor of the TPF client,
 with the aim to serve as a flexible research platform for experimenting with new Linked Data querying and publication techniques.
 
-Comunica is unlike similar works on different levels:
+Comunica is unlike similar works on different levels, offering the following features:
 
-1. The **modularity** of Comunica allows for easy _extensions_ and _customization_ of algorithms and functionality. Furthermore, modules can be added and removed using an RDF configuration file, which makes it possible for users to build and finetune their own engine.
-2. Within Comunica, multiple **heterogeneous** interfaces are a first class citizen. This enables federated querying over heterogeneous sources and makes it for example possible to evaluate queries over any combination of SPARQL endpoints, TPF entrypoints, datadumps or other types of interfaces.
-3. Comunica is implemented for the **Web** in JavaScript, which makes it possible to use it in a browser, from the command line, via the [SPARQL protocol](cite:cites spec:sparqlprot), or from any JavaScript application.
+* **SPARQL query evaluation**: understand, process and output results for SPARQL queries.
+* **Modular**: the implementation of specific tasks are contained in independent modules, which are combinable in a flexible framework. The modularity of Comunica allows for easy _extensions_ and _customization_ of algorithms and functionality. Furthermore, modules can be added and removed using an RDF configuration file, which makes it possible for users to build and finetune their own engine.
+* **Heterogeneous interfaces**: different types of datasource interfaces should be supported, and new interface types can be added independently. Within Comunica, multiple **heterogeneous** interfaces are a first class citizen. This enables federated querying over heterogeneous sources and makes it for example possible to evaluate queries over any combination of SPARQL endpoints, TPF entrypoints, datadumps or other types of interfaces.
+* **Web-based**: the engine should run in Web browsers, hence it should use native Web technologies. Comunica is implemented for the **Web** in JavaScript, which makes it possible to use it in a browser, from the command line, via the [SPARQL protocol](cite:cites spec:sparqlprot), or from any JavaScript application.
 
 In order to encourage reusability, Comunica and its default modules are publicly available
 on GitHub and the npm package manager under an open-source license.
@@ -49,8 +50,10 @@ Which license?
 {:.comment data-author="RT"}
 Not sure if it's important to mention this here.
 
+{:.comment data-author="MVS"}
+If we know the license, why not?
+
 This article is structure as follows:
-In the next section, we discuss the related work, followed by a listing of the main features of Comunica in [](#features).
-After that, we dicuss the architecture of Comunica in [](#architecture), its implementation in [](#implementation),
-and an overview of its differences with the TPF client in [](#comparison-tpf-client).
+In the next section, we discuss the related work, followed by a the architecture of Comunica in [](#architecture), and its implementation in [](#implementation).
+After that, we discuss its differences with related frameworks in [](#features) and the TPF client in [](#comparison-tpf-client).
 Finally, [](#conclusions) concludes and contains opportunities for future work.
