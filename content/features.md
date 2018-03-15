@@ -2,23 +2,15 @@
 {:#features}
 
 In this section, we discuss the main features of the Comunica engine,
-
-{:.comment data-author="MVS"}
-It's a resources paper, so it's already made
-
-with the aim of making it a flexible and easy-to-use successor of the TPF client for the Semantic Web research community.
+with the aim of being a flexible and easy-to-use successor of the TPF client for the Semantic Web research community.
 Furthermore, we discuss each feature based on the availability in related work.
 
 The following main features of Comunica will be discussed and summarized hereafter:
 
-{:.comment data-author="MVS"}
-- Explain these briefly, for instance by using first sentence of each subsection
-- the general explanation could use more depth
-
-* **SPARQL query evaluation**
-* **Modular**
-* **Heterogeneous interfaces**
-* **Environment-agnostic**
+* **SPARQL query evaluation**: The engine should be able to understand, process and output results for SPARQL queries.
+* **Modular**: Different independent modules should contain the implementation of specific tasks, and they should be combinable in a flexible framework.
+* **Heterogeneous interfaces**: Different types of datasource interfaces should be supported, and it should be possible to add new types independently.
+* **Web-based**: The engine should be able to run in Web browsers using native Web technologies.
 
 In [](#features-comparison), we summarize the availability of these features in similar works.
 
@@ -29,7 +21,7 @@ In [](#features-comparison), we summarize the availability of these features in 
 | SPARQL                   | ✓*         | ✓   | ✓      | ✓*        | ✓*          | ✓*       |
 | Modular                  |            |     |        |           |             | ✓        |
 | Heterogeneous interfaces |            |     |        |           |             | ✓        |
-| Environment-agnostic     | ✓          |     |        |           |             | ✓        |
+| Web-based                | ✓          |     |        |           |             | ✓        |
 
 <figcaption markdown="block">
 Comparison of the availability of the main features of Comunica in similar works.
@@ -39,7 +31,8 @@ Comparison of the availability of the main features of Comunica in similar works
 
 ### SPARQL query evaluation
 
-The most important feature of a SPARQL engine is its ability to evaluate SPARQL queries.
+SPARQL is the standard query language for RDF data.
+Therefore, the most important feature of an RDF query engine is its ability to evaluate SPARQL queries.
 At the time of writing, the TPF-client, rdflib.js, rdfstore-js, and Comunica support SPARQL 1.0, and a subset of SPARQL 1.1.
 ARQ and RDFLib are fully SPARQL 1.1 compliant.
 
@@ -54,13 +47,17 @@ They do not allow plugging in or out certain modules.
 
 ### Heterogeneous interfaces
 
-Next to support for querying over TPF entrypoints, Comunica also enables combined federated querying over other sources,
+Due to the existence of different types of Linked Data Fragments for exposing Linked Datasets,
+Comunica aims to support _heterogeneous_ interfaces types.
+Next to support for querying over TPF entrypoints, as is supported by the TPF client,
+Comunica also enables combined federated querying over other sources,
 such as SPARQL endpoints and data dumps in RDF serializations.
 ARQ, RDFLib, rdflib.js and rdfstore-js only support federation over SPARQL endpoints using the SERVICE keyword.
 The TPF client only supports federation over TPF entrypoints.
 
-### Environment-agnostic
+### Web-based
 
+Comunica is built using native Web technologies, such as JavaScript and RDF configuration files.
 Comunica is able to run in different kinds of environments, including Web browsers, local (JavaScript) runtime engines and command-line interfaces,
 just like the TPF-client.
 ARQ, RDFLib, rdflib.js and rdfstore-js are able to run in their language's runtime and via a command-line interface, but not from within Web browsers.
