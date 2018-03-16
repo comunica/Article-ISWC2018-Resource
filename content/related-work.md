@@ -67,6 +67,7 @@ These SPARQL engine APIs are similar to the Comunica engine that we propose,
 but the main difference is that they are not modular,
 they do not support heterogeneous interfaces,
 and they do not run natively in Web browsers.
+These differences will be explained in more detail in [](#features).
 
 ### Software design patterns
 

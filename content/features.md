@@ -1,6 +1,15 @@
 ## Feature analysis
 {:#features}
 
+In this section, we discuss the main features of the Comunica engine,
+with the aim of being a flexible and easy-to-use successor of the TPF client for the Semantic Web research community.
+Furthermore, we discuss each feature based on the availability in related work.
+
+* **SPARQL query evaluation**: The engine should be able to understand, process and output results for SPARQL queries.
+* **Modular**: Different independent modules should contain the implementation of specific tasks, and they should be combinable in a flexible framework.
+* **Heterogeneous interfaces**: Different types of datasource interfaces should be supported, and it should be possible to add new types independently.
+* **Web-based**: The engine should be able to run in Web browsers using native Web technologies.
+
 In [](#features-comparison), we summarize the availability of these features in similar works.
 
 <figure id="features-comparison" class="table" markdown="1">
