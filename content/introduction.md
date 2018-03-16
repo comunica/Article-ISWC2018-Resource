@@ -41,16 +41,7 @@ Comunica is unlike similar works on different levels:
 3. Comunica is implemented for the **Web** in JavaScript, which makes it possible to use it in a browser, from the command line, via the [SPARQL protocol](cite:cites spec:sparqlprot), or from any JavaScript application.
 
 In order to encourage reusability, Comunica and its default modules are publicly available
-on GitHub and the npm package manager under an open-source license.
-
-{:.comment data-author="MVS"}
-Which license?
-
-{:.comment data-author="RT"}
-Not sure if it's important to mention this here.
-
-{:.comment data-author="MVS"}
-If we know the license, why not?
+on GitHub and the npm package manager under the open-source MIT license.
 
 This article is structure as follows:
 In the next section, we discuss the related work, followed by a the architecture of Comunica in [](#architecture), and its implementation in [](#implementation).
