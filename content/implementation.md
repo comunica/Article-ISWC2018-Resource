@@ -4,7 +4,7 @@
 Comunica is implemented in TypeScript/JavaScript as a collection of Node modules.
 Comunica is available under an open license on [GitHub](https://github.com/comunica/comunica){:.mandatory}
 and on the [NPM package manager](https://www.npmjs.com/org/comunica){:.mandatory}.
-The 72 Comunica modules are tested thoroughly, with more than 1000 unit tests reaching a test coverage of 100%.
+The 79 Comunica modules are tested thoroughly, with more than 1200 unit tests reaching a test coverage of 100%.
 In order to be compatible with existing JavaScript RDF libraries,
 Comunica is fully compatible with the JavaScript API specification by the [RDFJS community group](https://www.w3.org/community/rdfjs/){:.mandatory}.
 Finally, we provide detailed documentation for the usage and development with [Comunica](https://comunica.readthedocs.io){:.mandatory}.

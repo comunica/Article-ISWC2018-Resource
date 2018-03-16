@@ -122,11 +122,11 @@ This description can for example be referenced when linking benchmark results to
 
 ### Modules
 
-At the time of writing, comunica consists of 72 different modules.
-This consists of 13 buses, 3 mediator types, 51 actors and 5 other modules.
+At the time of writing, comunica consists of 79 different modules.
+This consists of 13 buses, 3 mediator types, 57 actors and 6 other modules.
 In this section, we will only discuss the most important actors and their interactions.
 
-The main bus in Comunica is the _query operation_ bus, which consists of 15 different actors
+The main bus in Comunica is the _query operation_ bus, which consists of 19 different actors
 that implement the typical SPARQL operations such as quad patterns, basic graph patterns (BGPs), unions, projects, ...
 These actors interact with each other using quad and bindings streams,
 and act on a query plan in [SPARQL algebra](cite:cites spec:sparqllang).
