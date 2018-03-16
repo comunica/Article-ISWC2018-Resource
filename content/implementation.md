@@ -7,6 +7,8 @@ and on the [NPM package manager](https://www.npmjs.com/org/comunica){:.mandatory
 The 79 Comunica modules are tested thoroughly, with more than 1200 unit tests reaching a test coverage of 100%.
 In order to be compatible with existing JavaScript RDF libraries,
 Comunica is fully compatible with the JavaScript API specification by the [RDFJS community group](https://www.w3.org/community/rdfjs/){:.mandatory}.
+In order to encourage collaboration within the community, we extensively use the [GitHub issue tracker](https://github.com/comunica/comunica/issues){:.mandatory}
+for planned features, bugs and other issues.
 Finally, we provide detailed documentation for the usage and development with [Comunica](https://comunica.readthedocs.io){:.mandatory}.
 
 We provide a default Linked Data-based configuration file with all available actors for evaluating (federated) SPARQL queries over heterogeneous sources.
