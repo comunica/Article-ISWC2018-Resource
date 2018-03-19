@@ -1,17 +1,33 @@
 ## Abstract
 <!-- Context      -->
-The Linked Open Data cloud keeps growing, and so does the number of different types of Linked Data retrieval interfaces.
-Such interfaces include raw data dumps, SPARQL endpoints, TPF entrypoints, and variants.
-In order to query the Linked Data that is contained in all of these different types of sources,
+Query evaluation over Linked Data sources has become a complex story,
+given the multitude of algorithms and techniques
+for single- and multi-source querying,
+as well as the heterogeneity of Web interfaces
+through which data is published online.
 <!-- Need         -->
-there is a need for an engine that is able to query over such heterogeneous interfaces,
-and where support for new kinds of interfaces can be added and tested for research-purposes.
+Today's query processors are insufficiently adaptable
+to test multiple query engine aspects in combination,
+such as evaluating the performance of a certain join algorithm
+over a federation of heterogeneous interfaces.
+The Semantic Web research community is in need of a flexible query engine
+that allows plugging in new components
+such as different algorithms,
+new or experimental SPARQL features,
+and support for new Web interfaces.
 <!-- Task         -->
-As such, we designed and developed a Web-friendly and modular engine that is able to perform federated querying over heterogeneous sources.
+We designed and developed a Web-friendly and modular query engine
+called _Comunica_
+that meets these specifications.
 <!-- Object       -->
-In this article, we introduce this engine --called _Comunica_-- and discuss its architecture.
+In this article,
+we introduce this query engine
+and explain the architectural choices behind its design.
 <!-- Findings     -->
+We show how its modular nature makes it an ideal research platform
+for investigating new kinds of Linked Data interfaces and querying algorithms.
 <!-- Conclusion   -->
-Comunica is the first system that is able to query over heterogeneous Linked Data interfaces.
-Its modular nature makes it the ideal research platform for investigating new kinds of Linked Data interfaces and querying algorithms.
+Comunica facilitates the development, testing, and evaluation
+of new query processing capabilities,
+both in isolation and in combination with others.
 <!-- Perspectives -->
