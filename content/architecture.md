@@ -25,15 +25,11 @@ Finally, we give an overview of all modules.
 
 ### Actor-Mediator-Bus Pattern
 
-The modules in Comunica work together based on the [_actor_](cite:cites actormodel),
+With the aim of modularity and customizability in mind,
+the modules in Comunica work together based on the [_actor_](cite:cites actormodel),
 [_mediator_](cite:cites mediatorpattern), and [_publish-subscribe_](cite:cites publishsubscribepattern) patterns.
-<span class="comment" data-author="RV">Start from the why.</span>
-Any number of _actor_ modules can be created,
-<span class="comment" data-author="RV">Also mediators and buses, right?</span>
-where each actor interacts with _mediators_, that in turn invoke other actors that are registered to a certain _bus_.
-<del class="comment" data-author="RV">
-_Actors_, _buses_ and _mediators_ form the three main categories of modules in Comunica.
-</del>
+Any number of _actor_, _mediator_ and _bus_ modules can be created,
+where each actor interacts with mediators, that in turn invoke other actors that are registered to a certain bus.
 
 [](#actor-mediator-bus) shows an example logic flow between actors through a mediator and a bus.
 The relation between these components, their phases and the chaining of them will be explained hereafter.
@@ -57,8 +53,8 @@ Actors are the main computational units in Comunica, and buses and mediators for
 Actors are responsible for being able to accept certain messages
 via the bus to which they are subscribed,
 and for responding with an answer.
-Separate buses exist for different message types.
-<span class="comment" data-author="RV">why?</span>
+In order to avoid a single high-traffic bus for all message types which could cause performance issues,
+separate buses exist for different message types.
 [](#relation-actor-bus) shows an example of how actors can be registered to buses.
 
 <figure id="relation-actor-bus">
@@ -75,9 +71,7 @@ The right bus has actors that join query bindings streams together in a certain 
 Each mediator is connected to a single bus, and its goal is to determine and invoke the *best* actor for a certain task.
 The definition of '*best*' depends on the mediator, and different implementations can lead to different choices in different scenarios.
 A mediator works in two phases: the _test_ phase and the _run_ phase.
-The test phase is used to check which actors on the bus are _able to act_ on a certain type of message,
-<span class="comment" data-author="RV">but they should be, according to [](#relation-actor-bus)?</span>
-and if so, what are the conditions under which this action can be performed.
+The test phase is used to check under which conditions the action can be performed in each actor on the bus.
 This phase must always come before the _run_ phase, and is used to select which actor is best suited to perform a certain task under certain conditions.
 If such an actor is determined, the _run_ phase of a single actor is initiated.
 This _run_ phase takes this same type of message, and requires to _effectively act_ on this message,
@@ -95,21 +89,6 @@ Which one is best, depends on the use case and is determined by the Mediator.
 The mediator first calls the _tests_ the actors for the action, and then _runs_ the action using the _best_ actor.
 </figcaption>
 </figure>
-
-#### Chaining of Actors
-
-More complex actors can require the functionality of other types of actors.
-Instead of letting actors call each other immediately, actors must call mediators instead,
-as is shown in the interaction in [](#actor-mediator-bus).
-This makes actors loosely coupled, as they only require a task to be solved by an external actor,
-it does not matter _how_ the task was solved.
-The '_how_' is chosen by the mediator.
-The exact type of mediator can be passed to the actor during intialization,
-so that different mediators can be configured depending on a configuration.
-
-For example, a SPARQL query evaluation actor can require the functionality of actors that join streams of bindings.
-
-<span class="comment" data-author="RV">I didn't understand this section.</span>
 
 ### Dynamic Wiring
 
@@ -170,12 +149,12 @@ This actor is linked to a mediator with a bus containing two RDF parsers for spe
 </figcaption>
 </figure>
 
-While the primary goal of these configuration files is to initialize a Comunica engine,
+Since many different configurations can be created,
+it is important to know which one was used in a certain scenario,
+such as the invocation of a benchmark.
+Next to the primary goal of the configuration files, i.e., initializing a comunica engine,
 these files can also be used as a semantic description of the engine.
-This description can for example be referenced when linking benchmark results to the used engines in a machine-readable format.
-<span class="comment" data-author="RV">Start from the why:
-since there are going to be many configurations,
-it's important to know which one was used.</span>
+As such, benchmark results can link to the used Comunica engine in a machine-readable format.
 
 ### Modules
 
@@ -184,12 +163,9 @@ This consists of 13 buses, 3 mediator types, 57 actors and 6 other modules.
 In this section, we will only discuss the most important actors and their interactions.
 
 The main bus in Comunica is the _query operation_ bus, which consists of 19 different actors
-that provide <ins class="comment" data-author="RV">one possible implementation of</ins> the typical SPARQL operations such as quad patterns, basic graph patterns (BGPs), unions, projects, ...
+that provide at least one possible implementation of the typical SPARQL operations such as quad patterns, basic graph patterns (BGPs), unions, projects, ...
 These actors interact with each other using streams of _quad_ or _solution mappings_,
 and act on a query plan expressed in in [SPARQL algebra](cite:cites spec:sparqllang).
-<del class="comment" data-author="RV">
-By default, no query plan rewriting is done, and BGPs are resolved using the original [TPF algorithm](cite:cites ldf).
-</del>
 
 In order to enable heterogeneous sources to be queried in a federated way,
 we allow a list of sources, annotated by type, to be passed when a query is initiated.
