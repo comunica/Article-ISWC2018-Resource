@@ -1,7 +1,7 @@
 ## Feature analysis
 {:#features}
 
-In this section, we discuss the main features of the Comunica engine,
+In this section, we discuss the main features of the Comunica framework,
 with the aim of being a flexible and easy-to-use successor of the TPF client for the Semantic Web research community.
 Furthermore, we discuss each feature based on the availability in related work.
 

@@ -9,7 +9,7 @@ Second, what architectural decisions did we make
 and how do they support the requirements?
 So basically, it seems that we want [](#features) upfront.
 
-In this section, we discuss the design and architecture of the Comunica engine.
+In this section, we discuss the design and architecture of the Comunica meta engine.
 In summary, Comunica is collection of small modules that, when wired together,
 are able to perform a certain task, such as evaluating SPARQL queries.
 <span class="comment" data-author="RV">

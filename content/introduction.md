@@ -58,7 +58,7 @@ At the moment, it reads like you're solving our and Olaf's problem,
 but we're solving something much broader.
 
 In this article, we introduce _Comunica_ as a query client that truly accomplishes this LDF vision.
-It is a highly _modular_ engine for _federated_ _SPARQL query_ evaluation over _heterogeneous interfaces_,
+It is a highly _modular_ meta engine for _federated_ _SPARQL query_ evaluation over _heterogeneous interfaces_,
 including TPF entrypoints, SPARQL endpoints and data dumps.
 Comunica thereby positions itself as the successor of the TPF client,
 with the aim to serve as a flexible research platform for experimenting with new Linked Data querying and publication techniques.
@@ -66,13 +66,9 @@ with the aim to serve as a flexible research platform for experimenting with new
 {:.comment data-author="RV"}
 Same here, not just LDF.
 
-Comunica is differs from existing query engines on different levels:
+Comunica differs from existing query engines on different levels:
 
-{:.comment data-author="RV"}
-Should we call it a _meta query engine_?
-Should we already to that here?
-
-1. The **modularity** of Comunica allows for easy _extensions_ and _customization_ of algorithms and functionality. Furthermore, modules can be added and removed using an RDF configuration file, which makes it possible for users to build and finetune their own engine.
+1. The **modularity** of the Comunica meta query engine allows for easy _extensions_ and _customization_ of algorithms and functionality. Furthermore, modules can be added and removed using an RDF configuration file, which makes it possible for users to build and finetune their own engine.
 <span class="comment" data-author="RV">Yeah, and those configurations can be published too. Full repeatability of an exact configuration. More than repeatability: just take an existing config, add in your algorithm, and you can compare.</span>
 2. Within Comunica, multiple **heterogeneous** interfaces are a first-class citizen. This enables federated querying over heterogeneous sources and makes it for example possible to evaluate queries over any combination of SPARQL endpoints, TPF entrypoints, datadumps, or other types of interfaces.
 3. Comunica is implemented for the **Web** in JavaScript, which makes it possible to use it in a browser, from the command line, via the [SPARQL protocol](cite:cites spec:sparqlprot), or from any Web or JavaScript application.

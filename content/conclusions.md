@@ -1,7 +1,7 @@
 ## Conclusions
 {:#conclusions}
 
-In this work, we introduced Comunica as a highly _modular_ SPARQL engine for _federated_ _SPARQL query_ evaluation over _heterogeneous interfaces_.
+In this work, we introduced Comunica as a highly _modular_ meta SPARQL engine for _federated_ _SPARQL query_ evaluation over _heterogeneous interfaces_.
 Comunica is thereby first system that truly accomplishes the Linked Data Fragments vision of a client that is able to query over heterogeneous interfaces.
 Not only can Comunica be used as a client-side SPARQL engine, it can also be customized to become a more lightweight engine and perform more specific tasks,
 such as for example only evaluating BGPs over Turtle files,
