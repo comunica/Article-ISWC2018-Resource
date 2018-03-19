@@ -7,6 +7,7 @@ First, what are the requirements of this engine?
 We do need a requirements analysis section.
 Second, what architectural decisions did we make
 and how do they support the requirements?
+So basically, it seems that we want [](#features) upfront.
 
 In this section, we discuss the design and architecture of the Comunica engine.
 In summary, Comunica is collection of small modules that, when wired together,
