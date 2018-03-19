@@ -115,6 +115,9 @@ These differences will be explained in more detail in [](#features).
 
 ### Software design patterns
 
+{:.comment data-author="RV"}
+This section can go (or be substantially shortened) if space is short.
+
 In the following, we discuss three software design patterns that are relevant to the modular design of the Comunica engine.
 
 {:.comment data-author="MVS"}
