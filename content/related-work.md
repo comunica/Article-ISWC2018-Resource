@@ -5,13 +5,30 @@ In this section, we discuss the Linked Data Fragments framework,
 followed by the state-of-the-art on modular SPARQL engines.
 Finally, we discuss several software design patterns that are essential in the architecture of Comunica.
 
+{:.comment data-author="RV"}
+No no, start the first section with
+the SPARQL languages, query engines, and algorithms,
+and end that with federation,
+and traversal-based query evaluation.
+Then a section about TPF and others.
+The point of RelWork should be:
+so many degrees of freedom in a SPARQL query processor,
+and most of them were never even combined.
+
 ### Linked Data Fragments
 
+<ins class="comment" data-author="RV">
+In order to formally capture the heterogeneity of different Web interfaces to publish RDF data,
+</ins>
 A [Linked Data Fragment](cite:cites ldf) (LDF) has been defined as a type of response to a Web interface for an RDF-based knowledge graph.
-The simplest type of LDF is a data dump---it is the response of a single HTTP requests for a complete RDF dataset.
+The simplest type of LDF is a _data dump_---it is the response of a single HTTP requests for a complete RDF dataset.
 If only a subset of a dataset is needed, then downloading a full data dump is not always the most efficient way.
-Alternatively, SPARQL endpoints could be used to query specific parts of a dataset.
+Alternatively, _SPARQL endpoints_ could be used to query specific parts of a dataset.
 Therefore, the response of a SPARQL endpoint can also be considered an LDF.
+<span class="comment" data-author="RV">…by definition. I'd rephrase that.</span>
+
+{:.comment data-author="RV"}
+Refs missing.
 
 Choosing an interface to publish a dataset involves a trade-off between server and client load for query evaluation.
 On the one hand, a raw dataset dump can be published by a simple static file server,
@@ -23,8 +40,17 @@ SPARQL endpoints however require the server to do all the work for evaluating qu
 The [Triple Pattern Fragments](cite:cites ldf) interface was introduced as a trade-off
 between data dumps and SPARQL endpoints, where both client and server share the effort of evaluating queries.
 
+{:.comment data-author="RV"}
+We're again focusing too much about history here.
+Look at the Web as it currently is:
+RDF in different interfaces,
+each of which has a good reason of existence (trade-offs).
+So the question is no longer: which is the best interface,
+but rather, how do we deal with that heterogeneity?
+
 When choosing a type of LDF to publish a dataset, there is no silver bullet,
 i.e., there is no single interface that works well in all situations, as each one involves trade-offs.
+<span class="comment" data-author="RV">Okay good, you're getting into that story now 😉 Maybe earlier then? Or maybe we don't need the previous paragraph at all?</span>
 As such, data publishers must choose the type of interface that matches their intended use case, target audience and infrastructure.
 This however complicates client-side engines that are supposed to retrieve data from the resulting heterogeneity of interfaces.
 As shown by the TPF approach, interfaces can be _self-descriptive_ and expose one or more [_features_](cite:cites webapifeatures),
@@ -33,7 +59,7 @@ This allows clients without prior knowledge of the exact inputs and outputs of a
 to discover its _controls_ and use it to retrieve data.
 
 Up until now, no approaches exist that are able to query over interfaces in a heterogeneous manner,
-which is exactly a problem we aim to solve with Comunica.
+which is a problem we aim to solve with Comunica.
 
 ### SPARQL frameworks
 
@@ -41,6 +67,11 @@ Comunica is a SPARQL framework that is _loosely-coupled_ to any RDF indexing str
 as opposed to _tightly-coupled_ SPARQL engines such as
 [AllegroGraph](cite:cites allegrograph), [Blazegraph](cite:cites blazegraph), and [Virtuoso](cite:cites virtuoso).
 For the remainder of this section, we only focus on other loosely-coupled SPARQL frameworks.
+
+{:.comment data-author="RV"}
+Mmm no, explain these as engines that are intended to run on a server,
+closely to the data.
+And I wouldn't just go over them in one sentence.
 
 The [Triple Pattern Fragments client](cite:cites ldf) is a client-side SPARQL engine 
 
@@ -50,8 +81,15 @@ that not really accurate, it was designed to query LDF APIs, but didn't go beyon
 {:.comment data-author="RT"}
 True, but I think we should explain it as it is, not as it was intended.
 
+{:.comment data-author="RV"}
+That's what Miel is saying, right?
+I think he was just opposing <q>client-side SPARQL engine</q>,
+but I am fine with it
+(it is a SPARQL engine on top of a specific data source,
+just like Virtuoso is [but Jena less so]).
+
 that is decoupled from an RDF store.
-It is able to retrieve data over HTTP from TPF entrypoints using triple pattern queries.
+It is able to retrieve data over HTTP from TPF interfaces using triple pattern queries.
 It can however not directly interact with other types of datasources.
 Furthermore, the TPF client is built for the Web, as it can run in any JavaScript environment, such as the browser.
 
@@ -60,13 +98,19 @@ are frameworks for handling RDF data and include an API for evaluating SPARQL qu
 Jena is a Java framework, RDFLib is a python package, and rdflib.js and rdfstore-js are JavaScript modules.
 Jena, or more specifically the ARQ API, and RDFLib are fully SPARQL 1.1 compliant.
 rdflib.js and rdfstore-js both support a subset of SPARQL 1.1.
+<del class="comment" data-author="RV">
 Furthermore, rdflib.js and rdfstore-js only support the Node.js environment, they can not be used from within a browser.
+</del>
+<span class="comment" data-author="RV">Incorrect; they were designed for the browser first.</span>
 These SPARQL engines are not coupled to a specific datasource,
 instead, in-memory models or other sources can be used, such as Jena TDB in the case of ARQ.
 These SPARQL engine APIs are similar to the Comunica engine that we propose,
 but the main difference is that they are not modular,
+<span class="comment" data-author="RV">Rather, we propose a wholly different level of modularity. Try swapping out a query algorithm in them.</span>
 they do not support heterogeneous interfaces,
+<del class="comment" data-author="RV">
 and they do not run natively in Web browsers.
+</del>
 These differences will be explained in more detail in [](#features).
 
 ### Software design patterns
@@ -75,6 +119,9 @@ In the following, we discuss three software design patterns that are relevant to
 
 {:.comment data-author="MVS"}
 - I'd add a figure of each pattern, like this: https://realtimeapi.io/wp-content/uploads/2017/09/pubsub-1.png
+
+{:.comment data-author="RV"}
+Probably no space though?
 
 #### Publish–subscribe pattern
 
