@@ -726,8 +726,11 @@ padding-right:0;
 }
 
 
-ol, ul, dd, table {
+ol, ul, table {
 margin-bottom:1em;
+}
+dd {
+margin-bottom:.5em;
 }
 
 figure,
@@ -851,10 +854,6 @@ dl[rel="skos:hasTopConcept"] dt:after { content: ": "; }
 p + dl[rel="skos:hasTopConcept"] { margin-top:0; }
 p + dl {
 margin-top:1.25em;
-}
-
-dt {
-margin-bottom:0.5em;
 }
 
 main {
