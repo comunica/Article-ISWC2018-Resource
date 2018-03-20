@@ -18,7 +18,7 @@ Using a configuration file, which is created before an engine is started,
 components for an engine can be _selected_, _configured_ and _combined_.
 For this, we use the [Components.js](cite:cites componentsjs) JavaScript dependency injection framework,
 This framework is based on semantic module descriptions and configuration files
-using the [Object-Oriented Components ontology](cite:cites describingsoftwareconfigurations).
+using the [Object-Oriented Components ontology](cite:cites vanherwegen_semsci_2017).
 
 #### Description of Individual Software Components
 
