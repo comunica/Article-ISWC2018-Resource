@@ -57,7 +57,7 @@ Since many different configurations can be created,
 it is important to know which one was used for a specific use case or evaluation.
 For that purpose,
 the RDF documents that are used to instantiate a Comunica engine
-can be [published as Linked Data](vanherwegen_semsci_2017).
+can be [published as Linked Data](cito:citeAsEvidence vanherwegen_semsci_2017).
 They can then serve as provenance
 and as the basis for derived set-ups or evaluations.
 
