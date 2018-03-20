@@ -78,9 +78,9 @@
 }{\end{axis}}
 \begin{tikzpicture}
 \begin{resultAxis}
-\addplot+[ybar] table [x=name, y expr=\thisrow{ldf_time} / 1000, col sep=semicolon]{avg_c23.csv};
-\addplot+[ybar] table [x=name, y expr=\thisrow{comunica_time} / 1000, col sep=semicolon]{avg_c23.csv};
-\addplot+[ybar] table [x=name, y expr=\thisrow{sort_time} / 1000, col sep=semicolon]{avg_c23.csv};
+\addplot+[ybar] table [x=name, y expr=\thisrow{ldf_time} / 1000, col sep=semicolon]{content/img/avg_c23.csv};
+\addplot+[ybar] table [x=name, y expr=\thisrow{sort_time} / 1000, col sep=semicolon]{content/img/avg_c23.csv};
+\addplot+[ybar] table [x=name, y expr=\thisrow{comunica_time} / 1000, col sep=semicolon]{content/img/avg_c23.csv};
 \legend{}
 \end{resultAxis}
 \end{tikzpicture}

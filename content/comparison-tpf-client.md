@@ -10,14 +10,22 @@ Next to a functional completeness, it is also desired that Comunica achieves sim
 The higher modularity of Comunica is however expected to cause performance overhead,
 due to the additional bus and mediator communication, which does not exist in the TPF client.
 Hereafter, we compare the performance of the TPF client and Comunica
-and discover that Comunica in most cases outperforms the TPF client.
+and discover that Comunica has similar performance to the TPF client.
 As the main goal of Comunica is modularity, and not performance, we do not compare with similar frameworks such as ARQ and RDFLib.
 
-For the setup of this evaluation we made use of a single machine (Intel Core i5-3230M CPU at 2.60 GHz with 8 GB of RAM),
+For the setup of this evaluation we used a single machine (Intel Core i5-3230M CPU at 2.60 GHz with 8 GB of RAM),
 running the Linked Data Fragments server with a [HDT-backend](cite:cites hdt) and the TPF client or Comunica.
-The main goal of this evaluation was to determine the performance impact of the new implementation,
+The main goal of this evaluation is to determine the performance impact of Comunica,
 while keeping all other variables constant.
-We used the following <a about="#evaluation-workflow" content="Comunica evaluation workflow" href="#evaluation-workflow" property="rdfs:label" rel="cc:license" resource="https://creativecommons.org/licenses/by/4.0/">workflow</a>:
+
+In order to illustrate the benefit of modularity within Comunica,
+we evaluate using two different configurations of Comunica.
+The first configuration (_Comunica-sort_) implements a BGP algorithm that is similar to that of the original TPF client,
+i.e., it sorts triple patterns based on their estimated counts and evaluates and joins them in that order.
+The second configuration (_Comunica-smallest_) implements a simplified version of this BGP algorithm that does not sort _all_ triple patterns in a BGP,
+but merely picks the triple pattern with the smallest estimated count to evaluate on each recursive call, leading to slightly different query plans.
+
+We used the following <a about="#evaluation-workflow" content="Comunica evaluation workflow" href="#evaluation-workflow" property="rdfs:label" rel="cc:license" resource="https://creativecommons.org/licenses/by/4.0/">evaluation workflow</a>:
 
 <ol id="evaluation-workflow" property="schema:hasPart" resource="#evaluation-workflow" typeof="opmw:WorkflowTemplate" markdown="1">
 <li id="workflow-data" about="#workflow-data" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#evaluation-workflow" property="rdfs:label" markdown="1">
@@ -37,7 +45,8 @@ We used the following <a about="#evaluation-workflow" content="Comunica evaluati
 </li>
 <li id="workflow-comunica" about="#workflow-comunica" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#evaluation-workflow" property="rdfs:label" markdown="1">
   Install [the Comunica software configuration](https://github.com/comunica/comunica/blob/master/packages/actor-init-sparql/config/config-default.json){:.mandatory}, implementing the [SPARQL 1.1 protocol](https://www.w3.org/TR/sparql11-protocol){:mandatory}, with its [dependencies](){:.mandatory}.
-  (TODO: Add dependencies)
+  <span class="comment" data-author="RT">Joachim: Add dependencies (LSD-style)</span>
+  <span class="comment" data-author="RV">Joachim: add config of both _Comunica-sort_ and _Comunica-smallest_</span>
 </li>
 <li id="workflow-comunica-run" about="#workflow-comunica-run" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#evaluation-workflow" property="rdfs:label" markdown="1">
   Execute the generated WatDiv queries 3 times on the Comunica client, after doing a warmup run, and record the execution times [results](https://github.com/comunica/test-comunica/blob/master/results/watdiv-comunica.csv).
@@ -50,19 +59,22 @@ We used the following <a about="#evaluation-workflow" content="Comunica evaluati
 <img src="img/avg_c23.svg" alt="[performance-average]" class="plot">
 </center>
 <figcaption markdown="block">
-Average query evaluation times for the TPF client and Comunica for all queries.
+Average query evaluation times for the TPF client, Comunica-sort and Comunica-smallest for all queries.
 C2 and C3 are shown separately because of their higher evaluation times.
 </figcaption>
 </figure>
 
-{:.comment data-author="MVS"}
-Like we discussed, needs same-algorithm results as well and clearly explain this. 
-
-The results from [](#performance-average) show that Comunica is able to achieve similar,
-and in most cases even better performance than the TPF client.
-Concretely, Comunica is faster for 16 queries, and slower for 4 queries.
-Overall, Comunica has slightly better performance than the TPF client.
+The results from [](#performance-average) show that Comunica is able to achieve similar performance compared to the TPF client.
+Concretely, both Comunica variants are faster for 11 queries, and slower for 9 queries.
 However, the difference in evaluation times is in most cases very small,
 and are caused by implementation details, as the implemented algorithms are equivalent.
 Contrary to our expectations, the performance overhead of Comunica's modularity is negligible.
-Comunica therefore improves upon the TPF client in terms of *modularity*, *functionality* and *performance*.
+Comunica therefore improves upon the TPF client in terms of *modularity* and *functionality*, and achieves similar *performance*.
+
+These results also illustrate the simplicity of comparing different algorithms inside Comunica.
+In this case, we compared an algorithm that is similar to that of the original TPF client with a simplified variant.
+The results show that the performance is very similar, but the original algorithm (Comunica-sort) is faster in most of the cases.
+It is however not always faster, as illustrated by query C1, where Comunica-sort is almost a second slower than Comunica-smallest.
+In this case, the heuristic algorithm of the latter was able to come up with a slightly better query plan.
+Our goal with this result is to show that Comunica can easily be used to compare such different algorithms,
+where future work can focus on smart mediator algorithms to choose the best BGP actor in each case.
