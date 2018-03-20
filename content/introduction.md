@@ -13,11 +13,12 @@ such as
 data dumps, [Linked Data documents](cite:cites LinkedDataPrinciples),
 [SPARQL endpoints](cite:cites spec:sparqlprot)
 and [Triple Pattern Fragments (TPF) interfaces](cite:cites ldf).
-This has lead to entirely different query evaluation strategies,
+This has led to entirely different query evaluation strategies,
 such as [server-side](cite:cites spec:sparqlprot),
-client-side (by downloading data dumps and loading them locally),
 [link-traversal-based](cite:cites linkeddataqueries),
-and [shared client–server query processing](cite:cites ldf).
+[shared client–server query processing](cite:cites ldf),
+and
+client-side (by downloading data dumps and loading them locally).
 
 The resulting variety of implementations
 suffers from two main problems:
@@ -35,7 +36,7 @@ Comparability is also limited:
 forks based on older versions of an engine
 cannot meaningfully be evaluated against newer forks,
 and evaluating _combinations_ of cross-implementation features—such as
-different algorithms on different interfaces—are
+different algorithms on different interfaces—is
 not possible without code adaptation.
 As a result, many interesting comparisons are never performed
 because they are too costly to implement and maintain.
@@ -44,7 +45,7 @@ it is currently unknown
 how the [Linked Data Eddies algorithm](cito:citesAsAuthority acosta_iswc_2015)
 performs over a [federation](cito:cites ldf)
 of [brTPF interfaces](cito:cites brtpf).
-Another example is that the effects of various [optimizations and extensions for TPF interfaces](cite:cites tpfoptimization, tpfamf, tpfsubstring, brtpf, vtpf, cyclades, tpfqs)
+Another example is that the effects of various [optimizations and extensions for TPF interfaces](cite:cites tpfoptimization, tpfamf, tpfsubstring, acosta_iswc_2015, brtpf, vtpf, cyclades, tpfqs)
 have only been evaluated in isolation,
 whereas certain combinations will likely prove complementary.
 
@@ -56,11 +57,14 @@ In this article, we introduce _Comunica_ to realize this vision.
 It is a highly modular meta engine for federated SPARQL query evaluation
 over heterogeneous interfaces,
 including TPF interfaces, SPARQL endpoints, and data dumps.
-Comunica aims to serve as a flexible research platform for experimenting with new Linked Data querying and publication techniques.
+Comunica aims to serve as a flexible research platform for
+designing, implementing, and evaluating
+new and existing Linked Data querying and publication techniques.
 
 Comunica differs from existing query processors on different levels:
 
-1. The **modularity** of the Comunica meta query engine allows for easy _extensions_ and _customization_ of algorithms and functionality.
+1. The **modularity** of the Comunica meta query engine allows for
+_extensions_ and _customization_ of algorithms and functionality.
 Users can build and fine-tune a concrete engine
 by wiring the required modules through an RDF configuration document.
 By publishing this document,
@@ -71,7 +75,7 @@ experiments can repeated and adapted by others.
 Comunica and its default modules are publicly available
 on GitHub and the npm package manager under the open-source MIT license.
 
-This article is structure as follows:
+This article is structured as follows.
 In the next section, we discuss the related work, followed by the main features of Comunica in [](#features).
 After that, we introduce the architecture of Comunica in [](#architecture), and its implementation in [](#implementation).
 Next, we compare the performance of different Comunica configurations with the TPF client in [](#comparison-tpf-client).
