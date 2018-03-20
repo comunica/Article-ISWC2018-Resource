@@ -8,10 +8,6 @@ We do need a requirements analysis section.
 Second, what architectural decisions did we make
 and how do they support the requirements?
 So basically, it seems that we want [](#features) upfront.
-
-In this section, we discuss the design and architecture of the Comunica meta engine.
-In summary, Comunica is collection of small modules that, when wired together,
-are able to perform a certain task, such as evaluating SPARQL queries.
 <span class="comment" data-author="RV">
 And this is the point where I would call it a meta-engine:
 explain that different configurations can be declared and instantiated.
@@ -19,14 +15,67 @@ I.e., there's no such thing as _the_ Comunica engine.
 Pertaining to my previous comment,
 you could make this explicitly part of the requirements.
 </span>
-We first discuss the main design patterns that are used within Comunica.
-After that, we talk about the wiring of modules based on dependency-injection.
+
+In this section, we discuss the design and architecture of the Comunica meta engine.
+In summary, Comunica is collection of small modules that, when wired together,
+are able to perform a certain task, such as evaluating SPARQL queries.
+We first discuss the customizability of Comunica at design-time,
+followed by the flexibility of Comunica at run-time.
 Finally, we give an overview of all modules.
 
-### Actor-Mediator-Bus Pattern
+### Customizable Wiring at Design-time through Dependency Injection
 
-With the aim of modularity and customizability in mind,
-the modules in Comunica work together based on the [_actor_](cite:cites actormodel),
+Comunica achieves customizability at design-time using the concept of [_dependency injection_](cite:cites DependencyInjection).
+Using a configuration file, which is created before the engine is started,
+components can be _selected_, _configured_ and _combined_.
+For this, we use the [Components.js](cite:cites componentsjs) JavaScript dependency injection framework,
+This framework is based on semantic module descriptions and configuration files
+using the [Object-Oriented Components ontology](cite:cites describingsoftwareconfigurations).
+
+#### Description of individual software components
+
+In order to refer to Comunica components from within configuration files,
+we semantically describe all Comunica components using the Components.js framework in [JSON-LD](cite:cites jsonld).
+[](#config-actor) shows an example of the semantic description of an RDF parser.
+
+<figure id="config-actor" class="listing">
+````/code/config-actor.json````
+<figcaption markdown="block">
+Semantic description of a component that is able to parse N3-based RDF serializations.
+This component has a single parameter that allows media types to be registered that this parser is able to handle.
+In this case, the component has four default media types that can be overridden via the config file.
+</figcaption>
+</figure>
+
+#### Description of complex software configurations
+
+A specific instance of a Comunica engine
+can be _initialized_ using Components.js configuration files
+that describe the wiring between components.
+For example, [](#config-parser) shows a configuration file of an engine that is able to parse N3 and JSON-LD-based documents.
+This example shows that, due to its high degree of modularity,
+Comunica can be used for other purposes than a query engine,
+such as building a custom RDF parser.
+
+<figure id="config-parser" class="listing">
+````/code/config-parser.json````
+<figcaption markdown="block">
+Comunica configuration of `ActorInitRdfParse` for parsing an RDF document in an unknown serialization.
+This actor is linked to a mediator with a bus containing two RDF parsers for specific serializations.
+</figcaption>
+</figure>
+
+Since many different configurations can be created,
+it is important to know which one was used in a certain scenario,
+such as the invocation of a benchmark.
+Next to the primary goal of the configuration files, i.e., initializing a comunica engine,
+these files can also be used as a semantic description of the engine.
+As such, benchmark results can link to the used Comunica engine in a machine-readable format.
+
+### Flexibility at Run-time using the Actor-Mediator-Bus Pattern
+
+Once a Comunica engine has been configured and initialized,
+components can interact with each other in a flexible way using the [_actor_](cite:cites actormodel),
 [_mediator_](cite:cites mediatorpattern), and [_publish-subscribe_](cite:cites publishsubscribepattern) patterns.
 Any number of _actor_, _mediator_ and _bus_ modules can be created,
 where each actor interacts with mediators, that in turn invoke other actors that are registered to a certain bus.
@@ -89,72 +138,6 @@ Which one is best, depends on the use case and is determined by the Mediator.
 The mediator first calls the _tests_ the actors for the action, and then _runs_ the action using the _best_ actor.
 </figcaption>
 </figure>
-
-### Dynamic Wiring
-
-In order to make actors, mediators and buses loosely coupled and flexible to combine,
-we use the concept of [_dependency injection_](cite:cites DependencyInjection)
-to wire these modules together at runtime based on a configuration file.
-<span class="comment" data-author="RV">
-Well, yes and no.
-There's two phases, each with their own flexibility.
-At design-time, we use dependency injection to choose
-what modules will be wired into the executable;
-this includes both a _selection_
-and _combination_ of which part can talk to which.
-Then, at run-time,
-flexibility comes from the fact
-that there are multiple actors on a bus.
-It's crucial to explain those two phases.
-I would even suggest to flip the order
-of the current section with the previous one
-in order to make them chronological,
-and call them _Customizable wiring at design-time through dependency injection_
-and _Flexible component selection at run-time through the actor/bus model_.
-</span>
-We do this using the [Components.js](cite:cites componentsjs) JavaScript dependency injection framework,
-This framework is based on semantic module descriptions and configuration files
-using the [Object-Oriented Components ontology](cite:cites describingsoftwareconfigurations).
-
-#### Description of individual software components
-
-Using the Components.js framework, we semantically describe all actors, mediators and buses in [JSON-LD](cite:cites jsonld).
-<span class="comment" data-author="RV">first the why</span>
-[](#config-actor) shows an example of the semantic description of an RDF parser.
-
-<figure id="config-actor" class="listing">
-````/code/config-actor.json````
-<figcaption markdown="block">
-Semantic description of an actor that is able to parse N3-based RDF serializations.
-This actor has a single parameter that allows media types to be registered that this parser is able to handle.
-In this case, the actor has four default media types that can be overridden via the config file.
-</figcaption>
-</figure>
-
-#### Description of complex software configurations
-
-A specific instance of a Comunica engine
-can be _initialized_ using Components.js configuration files
-that describe the wiring between actors, mediators and buses.
-For example, [](#config-parser) shows a configuration file of an engine that is able to parse N3 and JSON-LD-based documents.
-This example shows that, due to its high degree of modularity,
-Comunica can be used for other purposes than a query engine,
-such as building a custom RDF parser.
-
-<figure id="config-parser" class="listing">
-````/code/config-parser.json````
-<figcaption markdown="block">
-Comunica configuration of `ActorInitRdfParse` for parsing an RDF document in an unknown serialization.
-This actor is linked to a mediator with a bus containing two RDF parsers for specific serializations.
-</figcaption>
-</figure>
-
-Since many different configurations can be created,
-it is important to know which one was used in a certain scenario,
-such as the invocation of a benchmark.
-Next to the primary goal of the configuration files, i.e., initializing a comunica engine,
-these files can also be used as a semantic description of the engine.
-As such, benchmark results can link to the used Comunica engine in a machine-readable format.
 
 ### Modules
 
