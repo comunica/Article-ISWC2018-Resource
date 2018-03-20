@@ -16,7 +16,7 @@ such as different algorithms,
 new or experimental SPARQL features,
 and support for new Web interfaces.
 <!-- Task         -->
-We designed and developed a Web-friendly and modular query engine
+We designed and developed a Web-friendly and modular meta query engine
 called _Comunica_
 that meets these specifications.
 <!-- Object       -->
