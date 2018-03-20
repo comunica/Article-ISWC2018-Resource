@@ -1,16 +1,6 @@
 ## Introduction
 {:#introduction}
 
-{:.comment data-author="RV"}
-The introduction still starts strongly from the interfaces perspective.
-As per my earlier comment, I still think it should be like:
-a query engine consists of many aspects—its algorithms,
-its support for certain (existing and new) SPARQL features,
-and its support for different kinds of sources.
-Cue pointers to different query evaluation paradigms **on the Web**,
-such as SPARQL endpoints, Linked Data traversal, TPF.
-I'll draft out a couple of paragraph ideas below.
-
 Linked Data on the Web exists in many shapes and forms—and
 so do the processors we use to query data from one or multiple sources.
 For instance,
@@ -29,16 +19,34 @@ client-side (by downloading data dumps and loading them locally),
 [link-traversal-based](cite:cites linkeddataqueries),
 and [shared client–server query processing](cite:cites ldf).
 
-Different implementations for such querying techniques exist,
-where many of the suggested improvements are implemented as _forks_ of existing software.
-Few of these ever become part of the main software releases,
-as it is often not trivial to harmonize them,
-which is why they are almost never evaluated in _combination_ with each other.
-For example, different federated querying algorithms exist,
-and there are multiple querying algorithms for the different types of heterogeneous interfaces.
-However, the combination of both, i.e., federated querying over heterogeneous interfaces, has not been accomplished yet.
-Another example is the variety of [optimizations and extensions in the TPF framework](cite:cites brtpf, vtpf, tpfamf, tpfsubstring, tpfoptimization, cyclades, tpfqs)
-that are only evaluated in isolation, whereas certain combinations could prove to be beneficial.
+The resulting variety of implementations
+suffers from two main problems:
+a lack of _sustainability_
+and a lack of _comparability_.
+Alternative query algorithms and features
+are typically either implemented as [_forks_ of existing software packages](cito:cites tpfoptimization,tpfamf,tpfsubstring)
+or as [_independent_ engines](cito:cites acosta_iswc_2015).
+This practice has limited sustainability:
+forks are often not merged into the main software distribution
+and hence become abandoned;
+independent implementations require a considerable upfront cost
+and also risk abandonment more than established engines.
+Comparability is also limited:
+forks based on older versions of an engine
+cannot meaningfully be evaluated against newer forks,
+and evaluating _combinations_ of cross-implementation features—such as
+different algorithms on different interfaces—are
+not possible without code adaptation.
+As a result, many interesting comparisons are never performed
+because they are too costly to implement and maintain.
+For example,
+it is currently unknown
+how the [Linked Data Eddies algorithm](cito:citesAsAuthority acosta_iswc_2015)
+performs over a [federation](cito:cites ldf)
+of [brTPF interfaces](cito:cites brtpf).
+Another example is that the effects of various [optimizations and extensions for TPF interfaces](cite:cites tpfoptimization, tpfamf, tpfsubstring, brtpf, vtpf, cyclades, tpfqs)
+have only been evaluated in isolation,
+whereas certain combinations will likely prove complementary.
 
 As such, in order to handle the increasing _heterogeneity_ of the Web,
 and to _combine_ various existing and new querying algorithms,
