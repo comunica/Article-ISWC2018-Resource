@@ -20,7 +20,7 @@ For this, we use the [Components.js](cite:cites componentsjs) JavaScript depende
 This framework is based on semantic module descriptions and configuration files
 using the [Object-Oriented Components ontology](cite:cites describingsoftwareconfigurations).
 
-#### Description of individual software components
+#### Description of Individual Software Components
 
 In order to refer to Comunica components from within configuration files,
 we semantically describe all Comunica components using the Components.js framework in [JSON-LD](cite:cites jsonld).
@@ -31,11 +31,11 @@ we semantically describe all Comunica components using the Components.js framewo
 <figcaption markdown="block">
 Semantic description of a component that is able to parse N3-based RDF serializations.
 This component has a single parameter that allows media types to be registered that this parser is able to handle.
-In this case, the component has four default media types that can be overridden via the config file.
+In this case, the component has four default media types.
 </figcaption>
 </figure>
 
-#### Description of complex software configurations
+#### Description of Complex Software Configurations
 
 A specific instance of a Comunica engine
 can be _initialized_ using Components.js configuration files
@@ -54,24 +54,23 @@ This actor is linked to a mediator with a bus containing two RDF parsers for spe
 </figure>
 
 Since many different configurations can be created,
-it is important to know which one was used in a certain scenario,
-such as the invocation of a benchmark.
-Next to the primary goal of the configuration files, i.e., initializing a comunica engine,
-these files can also be used as a semantic description of the engine.
-As such, benchmark results can link to the used Comunica engine in a machine-readable format.
+it is important to know which one was used for a specific use case or evaluation.
+For that purpose,
+the RDF documents that are used to instantiate a Comunica engine
+can be [published as Linked Data](vanherwegen_semsci_2017).
+They can then serve as provenance
+and as the basis for derived set-ups or evaluations.
 
-### Flexibility at Run-time using the Actor-Mediator-Bus Pattern
+### Flexibility at Run-time using the Actor–Mediator–Bus Pattern
 
 Once a Comunica engine has been configured and initialized,
 components can interact with each other in a flexible way using the [_actor_](cite:cites actormodel),
-[_mediator_](cite:cites mediatorpattern), and [_publish-subscribe_](cite:cites publishsubscribepattern) patterns.
+[_mediator_](cite:cites mediatorpattern), and [_publish–subscribe_](cite:cites publishsubscribepattern) patterns.
 Any number of _actor_, _mediator_ and _bus_ modules can be created,
 where each actor interacts with mediators, that in turn invoke other actors that are registered to a certain bus.
 
 [](#actor-mediator-bus) shows an example logic flow between actors through a mediator and a bus.
 The relation between these components, their phases and the chaining of them will be explained hereafter.
-
-<span class="comment" data-author="RV">This figure might not be needed; I feel there's a strong overlap with [](#run-test-phases), which goes more in depth.</span>
 
 <figure id="actor-mediator-bus">
 <img src="img/actor-mediator-bus.svg" alt="[actor-mediator-bus pattern]">

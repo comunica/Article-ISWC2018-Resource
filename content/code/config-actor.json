@@ -7,7 +7,7 @@
       "@type":          "Class",
       "extends":        "cbrp:Actor/RdfParse",
       "requireElement": "ActorRdfParseN3",
-      "comment":        "An actor that parses Turtle-like syntaxes",
+      "comment":        "An actor that parses Turtle-like RDF syntaxes",
       "parameters": [
         {
           "@id": "caam:Actor/AbstractMediaTypedFixed/mediaType",

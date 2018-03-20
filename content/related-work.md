@@ -102,12 +102,12 @@ We use this pattern in Comunica for allowing different implementations of certai
 #### Actor Model
 
 The [_actor_ model](cite:cites actormodel) was designed as a way to achieve highly parallel systems consisting of many independent _agents_
-communicating using messages, similar to the publish-subscribe pattern.
+communicating using messages, similar to the publish–subscribe pattern.
 An actor is a computational unit that performs a specific task, acts on messages, and can send messages to other actors.
 The main advantages of the actor model are that actors can be independently made to implement certain specific tasks based on messages,
 and that these can be handled asynchronously.
 These characteristics are highly beneficial to the modularity that we want to achieve with Comunica.
-That is why we use this pattern in combination with the publish-subscribe pattern to let each implementation of a certain task correspond to a separate actor.
+That is why we use this pattern in combination with the publish–subscribe pattern to let each implementation of a certain task correspond to a separate actor.
 
 #### Mediator pattern
 
