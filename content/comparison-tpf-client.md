@@ -1,28 +1,34 @@
-## Performance Analysis in Context to the TPF client
+## Performance Analysis
 {:#comparison-tpf-client}
 
-One of the goals of Comunica is to replace the TPF client as a more *flexible* and *modular* alternative,
+One of the goals of Comunica is to replace the TPF Client as a more *flexible* and *modular* alternative,
 with at least the same *functionality* and similar *performance*.
 The fact that Comunica supports multiple heterogeneous interfaces and sources as shown in the previous section
-validates this flexibility and modularity, as the TPF client only supports querying over TPF interfaces.
+validates this flexibility and modularity, as the TPF Client only supports querying over TPF interfaces.
 
-Next to a functional completeness, it is also desired that Comunica achieves similar *performance* compared to the TPF client.
+Next to a functional completeness, it is also desired that Comunica achieves similar *performance* compared to the TPF Client.
 The higher modularity of Comunica is however expected to cause performance overhead,
-due to the additional bus and mediator communication, which does not exist in the TPF client.
-Hereafter, we compare the performance of the TPF client and Comunica
-and discover that Comunica has similar performance to the TPF client.
+due to the additional bus and mediator communication, which does not exist in the TPF Client.
+Hereafter, we compare the performance of the TPF Client and Comunica
+and discover that Comunica has similar performance to the TPF Client.
 As the main goal of Comunica is modularity, and not performance, we do not compare with similar frameworks such as ARQ and RDFLib.
 
+{:.todo}
+Argue why absolute performance is not a problem,
+that the relative performance is key for comparisons
+(plus largest overhead is network anyway).
+
 For the setup of this evaluation we used a single machine (Intel Core i5-3230M CPU at 2.60 GHz with 8 GB of RAM),
-running the Linked Data Fragments server with a [HDT-backend](cite:cites hdt) and the TPF client or Comunica.
+running the Linked Data Fragments server with a [HDT-backend](cite:cites hdt) and the TPF Client or Comunica.
+<span class="comment" data-author="RV">Exact versions of the TPF Client and HDT module will be needed (cfr. my criticism on other works); link to Comunica config?</span>
 The main goal of this evaluation is to determine the performance impact of Comunica,
 while keeping all other variables constant.
 
 In order to illustrate the benefit of modularity within Comunica,
 we evaluate using two different configurations of Comunica.
-The first configuration (_Comunica-sort_) implements a BGP algorithm that is similar to that of the original TPF client,
-i.e., it sorts triple patterns based on their estimated counts and evaluates and joins them in that order.
-The second configuration (_Comunica-smallest_) implements a simplified version of this BGP algorithm that does not sort _all_ triple patterns in a BGP,
+The first configuration (_Comunica-sort_) <span class="todo">link</span> implements a BGP algorithm that is similar to that of the original TPF Client:
+it sorts triple patterns based on their estimated counts and evaluates and joins them in that order.
+The second configuration (_Comunica-smallest_) <span class="todo">link</span> implements a simplified version of this BGP algorithm that does not sort _all_ triple patterns in a BGP,
 but merely picks the triple pattern with the smallest estimated count to evaluate on each recursive call, leading to slightly different query plans.
 
 We used the following <a about="#evaluation-workflow" content="Comunica evaluation workflow" href="#evaluation-workflow" property="rdfs:label" rel="cc:license" resource="https://creativecommons.org/licenses/by/4.0/">evaluation workflow</a>:
@@ -38,10 +44,10 @@ We used the following <a about="#evaluation-workflow" content="Comunica evaluati
   Install [the server software configuration](https://linkedsoftwaredependencies.org/raw/ldf-availability-experiment-config.jsonld){:.mandatory}, implementing the [TPF specification](https://www.hydra-cg.com/spec/latest/triple-pattern-fragments/){:.mandatory}, with its [dependencies](https://linkedsoftwaredependencies.org/raw/ldf-availability-experiment-setup.ttl){:mandatory}.
 </li>
 <li id="workflow-tpf-client" about="#workflow-tpf-client" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#evaluation-workflow" property="rdfs:label" markdown="1">
-  Install [the client software configuration](https://github.com/LinkedDataFragments/Client.js){:.mandatory}, implementing the [SPARQL 1.1 protocol](https://www.w3.org/TR/sparql11-protocol){:mandatory}, with its [dependencies](https://linkedsoftwaredependencies.org/raw/ldf-availability-experiment-client.ttl){:.mandatory}.
+  Install [the TPF Client software](https://github.com/LinkedDataFragments/Client.js){:.mandatory}, implementing the [SPARQL 1.1 protocol](https://www.w3.org/TR/sparql11-protocol){:mandatory}, with its [dependencies](https://linkedsoftwaredependencies.org/raw/ldf-availability-experiment-client.ttl){:.mandatory}.
 </li>
 <li id="workflow-tpf-run" about="#workflow-tpf-run" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#evaluation-workflow" property="rdfs:label" markdown="1">
-  Execute the generated WatDiv queries 3 times on the TPF client, after doing a warmup run, and record the execution times [results](https://github.com/comunica/test-comunica/blob/master/results/watdiv-ldf.csv).
+  Execute the generated WatDiv queries 3 times on the TPF Client, after doing a warmup run, and record the execution times [results](https://github.com/comunica/test-comunica/blob/master/results/watdiv-ldf.csv).
 </li>
 <li id="workflow-comunica" about="#workflow-comunica" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#evaluation-workflow" property="rdfs:label" markdown="1">
   Install [the Comunica software configuration](https://github.com/comunica/comunica/blob/master/packages/actor-init-sparql/config/config-default.json){:.mandatory}, implementing the [SPARQL 1.1 protocol](https://www.w3.org/TR/sparql11-protocol){:mandatory}, with its [dependencies](){:.mandatory}.
@@ -49,7 +55,7 @@ We used the following <a about="#evaluation-workflow" content="Comunica evaluati
   <span class="comment" data-author="RV">Joachim: add config of both _Comunica-sort_ and _Comunica-smallest_</span>
 </li>
 <li id="workflow-comunica-run" about="#workflow-comunica-run" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#evaluation-workflow" property="rdfs:label" markdown="1">
-  Execute the generated WatDiv queries 3 times on the Comunica client, after doing a warmup run, and record the execution times [results](https://github.com/comunica/test-comunica/blob/master/results/watdiv-comunica.csv).
+  Execute the generated WatDiv queries 3 times on the Comunica client, after doing a warmup run, and record the [execution times](https://github.com/comunica/test-comunica/blob/master/results/watdiv-comunica.csv).
 </li>
 </ol>
 
@@ -59,20 +65,20 @@ We used the following <a about="#evaluation-workflow" content="Comunica evaluati
 <img src="img/avg_c23.svg" alt="[performance-average]" class="plot">
 </center>
 <figcaption markdown="block">
-Average query evaluation times for the TPF client, Comunica-sort and Comunica-smallest for all queries.
+Average query evaluation times for the TPF Client, Comunica-sort, and Comunica-smallest for all queries (shorter is better).
 C2 and C3 are shown separately because of their higher evaluation times.
 </figcaption>
 </figure>
 
-The results from [](#performance-average) show that Comunica is able to achieve similar performance compared to the TPF client.
+The results from [](#performance-average) show that Comunica is able to achieve similar performance compared to the TPF Client.
 Concretely, both Comunica variants are faster for 11 queries, and slower for 9 queries.
 However, the difference in evaluation times is in most cases very small,
 and are caused by implementation details, as the implemented algorithms are equivalent.
 Contrary to our expectations, the performance overhead of Comunica's modularity is negligible.
-Comunica therefore improves upon the TPF client in terms of *modularity* and *functionality*, and achieves similar *performance*.
+Comunica therefore improves upon the TPF Client in terms of *modularity* and *functionality*, and achieves similar *performance*.
 
 These results also illustrate the simplicity of comparing different algorithms inside Comunica.
-In this case, we compared an algorithm that is similar to that of the original TPF client with a simplified variant.
+In this case, we compared an algorithm that is similar to that of the original TPF Client with a simplified variant.
 The results show that the performance is very similar, but the original algorithm (Comunica-sort) is faster in most of the cases.
 It is however not always faster, as illustrated by query C1, where Comunica-sort is almost a second slower than Comunica-smallest.
 In this case, the heuristic algorithm of the latter was able to come up with a slightly better query plan.

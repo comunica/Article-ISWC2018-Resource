@@ -25,7 +25,7 @@ In [](#features-comparison), we summarize the availability of these features in 
 
 <figure id="features-comparison" class="table" markdown="1">
 
-| Feature                  | TPF-client | ARQ | RDFLib | rdflib.js | rdfstore-js | Comunica |
+| Feature                  | TPF Client | ARQ | RDFLib | rdflib.js | rdfstore-js | Comunica |
 | ------------------------ |------------|-----|--------|-----------|-------------|----------|
 | SPARQL                   | ✓*         | ✓   | ✓      | ✓*        | ✓*          | ✓*       |
 | Modularity               |            |     |        |           |             | ✓        |
@@ -64,11 +64,11 @@ They do not allow plugging in or out certain modules.
 
 Due to the existence of different types of Linked Data Fragments for exposing Linked Datasets,
 Comunica aims to support _heterogeneous_ interfaces types.
-Next to support for querying over TPF interfaces, as is supported by the TPF client,
+Next to support for querying over TPF interfaces, as is supported by the TPF Client,
 Comunica also enables combined federated querying over other sources,
 such as SPARQL endpoints and data dumps in RDF serializations.
 ARQ, RDFLib, rdflib.js and rdfstore-js only support federation over SPARQL endpoints using the SERVICE keyword.
-The TPF client only supports federation over TPF interfaces.
+The TPF Client only supports federation over TPF interfaces.
 
 ### Web-based
 
