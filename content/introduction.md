@@ -1,14 +1,33 @@
 ## Introduction
 {:#introduction}
 
-Linked Data is being _published_ in different ways, such as
-data dumps, [Linked Data documents](cite:cites linkeddata), [SPARQL query endpoints](cite:cites spec:sparqlprot)
+{:.comment data-author="RV"}
+The introduction still starts strongly from the interfaces perspective.
+As per my earlier comment, I still think it should be like:
+a query engine consists of many aspects—its algorithms,
+its support for certain (existing and new) SPARQL features,
+and its support for different kinds of sources.
+Cue pointers to different query evaluation paradigms **on the Web**,
+such as SPARQL endpoints, Linked Data traversal, TPF.
+I'll draft out a couple of paragraph ideas below.
+
+Linked Data on the Web exists in many shapes and forms—and
+so do the processors we use to query data from one or multiple sources.
+For instance,
+engines that query RDF data using the [SPARQL language](cito:citesAsAuthority spec:sparqllang)
+employ [_different algorithms_](cito:cites SparqlOptimization, SparqlSelectivityOptimization)
+and support [_different language extensions_](cito:cites Erling2009, fSPARQL).
+Furthermore,
+Linked Data is increasingly published through _different Web interfaces_,
+such as
+data dumps, [Linked Data documents](cite:cites LinkedDataPrinciples),
+[SPARQL endpoints](cite:cites spec:sparqlprot)
 and [Triple Pattern Fragments (TPF) interfaces](cite:cites ldf).
-Specific techniques exist for [_querying_](cite:cites linkeddataqueries) each of these heterogeneous sources,
-such as server-side querying using SPARQL endpoints,
-client-side querying by downloading data dumps and querying within them locally,
-a trade-off between both using the TPF approach,
-or by [traversing Linked Data links](cite:cites linktraversal).
+This has lead to entirely different query evaluation strategies,
+such as [server-side](cite:cites spec:sparqlprot),
+client-side (by downloading data dumps and loading them locally),
+[link-traversal-based](cite:cites linkeddataqueries),
+and [shared client–server query processing](cite:cites ldf).
 
 Different implementations for such querying techniques exist,
 where many of the suggested improvements are implemented as _forks_ of existing software.
