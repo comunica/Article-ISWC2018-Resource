@@ -1,22 +1,8 @@
 ## Architecture
 {:#architecture}
 
-{:.comment data-author="RV"}
-We need to approach this differently.
-First, what are the requirements of this engine?
-We do need a requirements analysis section.
-Second, what architectural decisions did we make
-and how do they support the requirements?
-So basically, it seems that we want [](#features) upfront.
-<span class="comment" data-author="RV">
-And this is the point where I would call it a meta-engine:
-explain that different configurations can be declared and instantiated.
-I.e., there's no such thing as _the_ Comunica engine.
-Pertaining to my previous comment,
-you could make this explicitly part of the requirements.
-</span>
-
-In this section, we discuss the design and architecture of the Comunica meta engine.
+In this section, we discuss the design and architecture of the Comunica meta engine,
+and show how it conforms to the _modularity_ feature requirement.
 In summary, Comunica is collection of small modules that, when wired together,
 are able to perform a certain task, such as evaluating SPARQL queries.
 We first discuss the customizability of Comunica at design-time,
@@ -25,9 +11,11 @@ Finally, we give an overview of all modules.
 
 ### Customizable Wiring at Design-time through Dependency Injection
 
-Comunica achieves customizability at design-time using the concept of [_dependency injection_](cite:cites DependencyInjection).
-Using a configuration file, which is created before the engine is started,
-components can be _selected_, _configured_ and _combined_.
+There is no such thing as _the_ Comunica engine,
+instead, Comunica is a meta engine that can be _instantiated_ into different engines based on different configurations.
+Comunica achieves this customizability at design-time using the concept of [_dependency injection_](cite:cites DependencyInjection).
+Using a configuration file, which is created before an engine is started,
+components for an engine can be _selected_, _configured_ and _combined_.
 For this, we use the [Components.js](cite:cites componentsjs) JavaScript dependency injection framework,
 This framework is based on semantic module descriptions and configuration files
 using the [Object-Oriented Components ontology](cite:cites describingsoftwareconfigurations).

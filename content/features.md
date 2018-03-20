@@ -1,9 +1,10 @@
-## Feature analysis
+## Features
 {:#features}
 
-In this section, we discuss the main features of the Comunica framework,
+In this section, we discuss the main requirements and features of the Comunica framework,
 with the aim of being a flexible and easy-to-use successor of the TPF client for the Semantic Web research community.
 Furthermore, we discuss each feature based on the availability in related work.
+The main feature requirements of Comunica are the following:
 
 * **SPARQL query evaluation**: The engine should be able to understand, process and output results for SPARQL queries.
 * **Modular**: Different independent modules should contain the implementation of specific tasks, and they should be combinable in a flexible framework.
@@ -16,8 +17,8 @@ In [](#features-comparison), we summarize the availability of these features in 
 
 | Feature                  | TPF-client | ARQ | RDFLib | rdflib.js | rdfstore-js | Comunica |
 | ------------------------ |------------|-----|--------|-----------|-------------|----------|
-| SPARQL                   | ✓*         | ✓   | ✓      | ✓*        | ✓*          | ✓*       |
 | Modular                  |            |     |        |           |             | ✓        |
+| SPARQL                   | ✓*         | ✓   | ✓      | ✓*        | ✓*          | ✓*       |
 | Heterogeneous interfaces |            |     |        |           |             | ✓        |
 | Web-based                | ✓          |     |        |           |             | ✓        |
 
@@ -27,19 +28,20 @@ Comparison of the availability of the main features of Comunica in similar works
 </figcaption>
 </figure>
 
-### SPARQL query evaluation
-
-At the time of writing, the TPF-client, rdflib.js, rdfstore-js, and Comunica support SPARQL 1.0, and a subset of SPARQL 1.1.
-ARQ and RDFLib are fully SPARQL 1.1 compliant.
-
 ### Modular
 
 Adding new functionality or changing certain operations in Comunica requires minimal to no changes to existing code.
 Furthermore, the Comunica environment is developer-friendly, including well documented APIs and auto-generation of stub code.
 In order to take full advantage of the Linked Data stack, modules in Comunica are describable, configurable and wireable in RDF.
+Comunica's modular architecture will be explained further in [](##architecture).
 By registering or excluding modules from a configuration file, the user is free to choose how heavy or lightweight the query engine will be.
 ARQ, RDFLib, rdflib.js and rdfstore-js only support customization by implementing a custom query engine programmatically to handle operators.
 They do not allow plugging in or out certain modules.
+
+### SPARQL query evaluation
+
+At the time of writing, the TPF-client, rdflib.js, rdfstore-js, and Comunica support SPARQL 1.0, and a subset of SPARQL 1.1.
+ARQ and RDFLib are fully SPARQL 1.1 compliant.
 
 ### Heterogeneous interfaces
 

@@ -77,6 +77,7 @@ Comunica and its default modules are publicly available
 on GitHub and the npm package manager under the open-source MIT license.
 
 This article is structure as follows:
-In the next section, we discuss the related work, followed by the architecture of Comunica in [](#architecture), and its implementation in [](#implementation).
-After that, we discuss its differences with related frameworks in [](#features) and the TPF client in [](#comparison-tpf-client).
+In the next section, we discuss the related work, followed by the main features of Comunica in [](#features).
+After that, we introduce the architecture of Comunica in [](#architecture), and its implementation in [](#implementation).
+Next, we compare the performance of different Comunica configurations with the TPF client in [](#comparison-tpf-client).
 Finally, [](#conclusions) concludes and contains opportunities for future work.
