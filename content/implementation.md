@@ -1,25 +1,25 @@
 ## Implementation
 {:#implementation}
 
-Comunica is implemented in TypeScript/JavaScript as a collection of Node modules, which are able to run in _Web browsers using native Web technologies_.
+Comunica is implemented in TypeScript/JavaScript as a collection of Node modules, which are able to run in Web browsers using native Web technologies.
 Comunica is available under an open license on [GitHub](https://zenodo.org/record/1202509#.Wq9GZhNuaHo){:.mandatory}
 and on the [NPM package manager](https://www.npmjs.com/org/comunica){:.mandatory}.
-The 79 Comunica modules are tested thoroughly, with more than 1200 unit tests reaching a test coverage of 100%.
+The 79 Comunica modules are tested thoroughly, with more than 1,200 unit tests reaching a test coverage of 100%.
 In order to be compatible with existing JavaScript RDF libraries,
-Comunica is fully compatible with the JavaScript API specification by the [RDFJS community group](https://www.w3.org/community/rdfjs/){:.mandatory}.
+Comunica is follows the JavaScript API specification by the [RDFJS community group](https://www.w3.org/community/rdfjs/){:.mandatory}.
 In order to encourage collaboration within the community, we extensively use the [GitHub issue tracker](https://github.com/comunica/comunica/issues){:.mandatory}
 for planned features, bugs and other issues.
-Finally, we provide detailed documentation for the usage and development with [Comunica](https://comunica.readthedocs.io){:.mandatory}.
+Finally, we publish detailed [documentation](https://comunica.readthedocs.io){:.mandatory} for the usage and development of Comunica.
 
-We provide a default Linked Data-based configuration file with all available actors for evaluating (federated) _SPARQL queries_ over heterogeneous sources.
-This allows SPARQL queries to be evaluated using a command line tool,
-a webservice implementing the [SPARQL protocol](cite:cites spec:sparqlprot),
-from within a JavaScript application,
+We provide a default Linked Data-based configuration file with all available actors for evaluating federated _SPARQL queries_ over heterogeneous sources.
+This allows SPARQL queries to be evaluated using a command-line tool,
+from a Web service implementing the [SPARQL protocol](cite:cites spec:sparqlprot),
+within a JavaScript application,
 or within the browser.
-Just like the TPF client, we fully support [SPARQL 1.0](cite:cites spec:sparqllang1) and a subset of [SPARQL 1.1](cite:cites spec:sparqllang) at the time of writing.
+We fully implemented [SPARQL 1.0](cite:cites spec:sparqllang1) and a subset of [SPARQL 1.1](cite:cites spec:sparqllang) at the time of writing.
 In future work, we intend to implement additional actors for supporting SPARQL 1.1 completely.
 
-At the time of writing, we support querying over the following types of _heterogeneous datasources and interfaces_:
+Comunica currently supports querying over the following types of _heterogeneous datasources and interfaces_:
 
 * [Triple Pattern Fragments interfaces](cite:cites ldf)
 * Quad Pattern Fragments interfaces ([an experimental extension of TPF with a fourth graph element](https://github.com/LinkedDataFragments/Server.js/tree/feature-qpf-latest){:.mandatory})
@@ -31,3 +31,9 @@ At the time of writing, we support querying over the following types of _heterog
 In the future, we will also look into adding support for other interfaces such as
 [brTPF](cite:cites brtpf) for more efficient join operations
 and [VTPF](cite:cites vtpf) for queries over versioned datasets.
+
+{:.todo}
+A remark about extensibility:
+implementing something for Comunica (algorithm, query operators, new interface support)
+just means implementing an external module,
+no need to create a fork or an own engine.
