@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+puts "The encoding is #{Encoding.default_external} / #{ENV['LANG']}"
+
 compile '/index.*' do
   filter :erb
   filter :bibmarkdown, bibfile: items['/references.bib'],
