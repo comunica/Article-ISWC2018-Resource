@@ -21,8 +21,8 @@ In future work, we intend to implement additional actors for supporting SPARQL 1
 
 At the time of writing, we support querying over the following types of _heterogeneous datasources and interfaces_:
 
-* [Triple Pattern Fragments entrypoints](cite:cites ldf)
-* Quad Pattern Fragments entrypoints ([an experimental extension of TPF with a fourth graph element](https://github.com/LinkedDataFragments/Server.js/tree/feature-qpf-latest){:.mandatory})
+* [Triple Pattern Fragments interfaces](cite:cites ldf)
+* Quad Pattern Fragments interfaces ([an experimental extension of TPF with a fourth graph element](https://github.com/LinkedDataFragments/Server.js/tree/feature-qpf-latest){:.mandatory})
 * [SPARQL endpoints](cite:cites spec:sparqlprot)
 * Local and remote dataset dumps in RDF serializations.
 * [HDT datasets](cite:cites hdt)

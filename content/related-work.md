@@ -45,15 +45,15 @@ Due to the ever-increasing number of available Linked Datasets,
 _federated query processing_ has been an active area of research.
 However, most of the existing frameworks work in the context of SPARQL endpoints,
 where [multiple endpoints are combined in a client-server architecture](cite:cites sparqlfederation).
-The TPF client is different in that sense, as it federates over TPF entrypoints instead of SPARQL endpoints.
+The TPF client is different in that sense, as it federates over TPF interfaces instead of SPARQL endpoints.
 However, no frameworks exist yet that enable federation over heterogeneous interfaces,
-such as the federation over any combination of SPARQL endpoints and TPF entrypoints.
+such as the federation over any combination of SPARQL endpoints and TPF interfaces.
 With Comunica, we also aim to fill this gap.
 
 {:.comment data-author="RT"}
 Not too sure about the following, as we don't do it in comunica at the moment.
 
-Next to RDF index-centric approaches like SPARQL endpoints and TPF entrypoints,
+Next to RDF index-centric approaches like SPARQL endpoints and TPF interfaces,
 alternative methodologies such as [link traversal-based query evaluation](cite:cites linktraversal) exist.
 Traversal-based querying is based around the concept of following links within Linked Data documents,
 which is useful for live exploration within Linked Data,

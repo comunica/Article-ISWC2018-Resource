@@ -4,7 +4,7 @@
 One of the goals of Comunica is to replace the TPF client as a more *flexible* and *modular* alternative,
 with at least the same *functionality* and similar *performance*.
 The fact that Comunica supports multiple heterogeneous interfaces and sources as shown in the previous section
-validates this flexibility and modularity, as the TPF client only supports querying over TPF entrypoints.
+validates this flexibility and modularity, as the TPF client only supports querying over TPF interfaces.
 
 Next to a functional completeness, it is also desired that Comunica achieves similar *performance* compared to the TPF client.
 The higher modularity of Comunica is however expected to cause performance overhead,
