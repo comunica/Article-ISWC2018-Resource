@@ -20,7 +20,7 @@ In [](#features-comparison), we summarize the availability of these features in 
 | Modular                  |            |     |        |           |             | ✓        |
 | SPARQL                   | ✓*         | ✓   | ✓      | ✓*        | ✓*          | ✓*       |
 | Heterogeneous interfaces |            |     |        |           |             | ✓        |
-| Web-based                | ✓          |     |        |           |             | ✓        |
+| Web-based                | ✓          |     |        | ✓         | ✓           | ✓        |
 
 <figcaption markdown="block">
 Comparison of the availability of the main features of Comunica in similar works.
