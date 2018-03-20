@@ -31,7 +31,7 @@ Furthermore, these frameworks do not support federated querying over heterogeneo
 This issue of modularity and heterogeneity are two of the main problems we aim to solve within Comunica.
 The differences between Comunica and existing frameworks will be explained in more detail in [](#features).
 
-The [Triple Pattern Fragments client](cite:cites ldf) is a client-side SPARQL engine
+The [Triple Pattern Fragments client](cite:cites ldf) (also known as Client.js or `ldf-client`) is a client-side SPARQL engine
 that is able to retrieve data over HTTP from [Triple Pattern Fragments (TPF) interfaces](cite:cites ldf) using triple pattern queries.
 [Different algorithms](cite:cites tpfoptimization, cyclades, tpfqs) for this client and
 [TPF interface extensions](cite:cites brtpf, vtpf, tpfamf, tpfsubstring) have been proposed that reduce effort of server or client in some way.

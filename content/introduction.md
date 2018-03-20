@@ -1,75 +1,39 @@
 ## Introduction
 {:#introduction}
 
-{:.comment data-author="MVS"}
-I think the build up should be like: Linked Data publishing -> many interfaces -> LDF -> embrace Web and heterogeneity -> modular client in JS. Now, it is written from the old limited client perspective, as we experienced it, but we shouldn't sell it that way.
+Linked Data is being _published_ in different ways, such as
+data dumps, [Linked Data documents](cite:cites linkeddata), [SPARQL query endpoints](cite:cites spec:sparqlprot)
+and [Triple Pattern Fragments (TPF) entrypoints](cite:cites ldf).
+Specific techniques exist for [_querying_](cite:cites linkeddataqueries) each of these heterogeneous sources,
+such as server-side querying using SPARQL endpoints,
+client-side querying by downloading data dumps and querying within them locally,
+a trade-off between both using the TPF approach,
+or by [traversing Linked Data links](cite:cites linktraversal).
 
-{:.comment data-author="RV"}
-And I think it should be like:
-a query engine consists of many aspects—its algorithms,
-its support for certain (existing and new) SPARQL features,
-and its support for different kinds of sources.
-Cue pointers to different query evaluation paradigms **on the Web**,
-such as SPARQL endpoints, Linked Data traversal, TPF.
-Explain that many of the suggested improvements are implemented as forks,
-few of which ever make it to master,
-and almost none of which are ever evaluated in combination.
-Case in point: nobody has done federation over heterogeneous interfaces.
-It's hard to make such combinations, so it rarely happens—imagine
-all the data points we're missing!
-Yippee ki-yay Semantic Web community,
-that's exactly what we're bringing to the table:
-a modular query engine as a research experimentation platform that does all of this.
+Different implementations for such querying techniques exist,
+where many of the suggested improvements are implemented as _forks_ of existing software.
+Few of these ever become part of the main software releases,
+as it is often not trivial to harmonize them,
+which is why they are almost never evaluated in _combination_ with each other.
+For example, different federated querying algorithms exist,
+and there are multiple querying algorithms for the different types of heterogeneous interfaces.
+However, the combination of both, i.e., federated querying over heterogeneous interfaces, has not been accomplished yet.
+Another example is the variety of [optimizations and extensions in the TPF framework](cite:cites brtpf, vtpf, tpfamf, tpfsubstring, tpfoptimization, cyclades, tpfqs)
+that are only evaluated in isolation, whereas certain combinations could prove to be beneficial.
 
-<del class="comment" data-author="RV">
-The number of datasets that are available in the [Linked Open Data](cite:cites linkeddata) cloud is [continuously increasing](cite:cites linkeddataadoption).
-As of February 2018, the [LODStats project](cite:cites lodstats) reports 2,973 available datasets containing more than 149 billion triples.
-</del>
-This Linked Data is being published in different ways, such as
-data dumps and [SPARQL query endpoints](cite:cites spec:sparqlprot).
+As such, in order to handle the increasing _heterogeneity_ of the Web,
+and to _combine_ various existing and new querying algorithms,
+there is therefore a need for a flexible and modular query engine
+that provides a way to experiment with all of these techniques, both separately and in combination.
 
-These different techniques for publishing Linked Data are also known as [Linked Data Fragments](cite:cites ldf) (LDFs).
-The LDF framework introduces an axis for comparing the load distribution between server and client load of Linked Data publication techniques when evaluating queries.
-[Triple Pattern Fragments](cite:cites ldf) (TPF) was a first low-cost server interface on this axis
-that was introduced as an attempt to solve the [major availability issues](cite:cites sparqlreadyforaction) when publishing Linked Data through SPARQL endpoints,
-by moving part of [SPARQL query evaluation](cite:cites spec:sparqllang) to the client side.
-This alternative Linked Data publication method has been receiving increasing attention within the research community,
-including [server interface extensions](cite:cites brtpf, vtpf, tpfamf, tpfsubstring) to [client-side optimizations and extensions](cite:cites tpfoptimization, cyclades, tpfqs).
-Most of these works include an adaptation of the TPF client (also known as Client.js or `ldf-client`),
-which is the default implementation of
-the TPF algorithm for federated evaluation of SPARQL queries using TPF entrypoints.
-
-{:.comment data-author="RV"}
-To much history; focus on the current state of the Web.
-No clear winner, never will be.
-
-These client adaptations clients are however not fully compatible with each other.
-They are implemented as different diverged _forks_ of the original client,
-and it is not trivial to harmonize them.
-This is because the TPF client is too dedicated to TPF entrypoints,
-i.e., it was not designed with extensions or adaptations in mind.
-Therefore, the TPF client is not able to achieve the complete LDF vision of a client that embraces the heterogeneity of interfaces,
-and there is a need for a more flexible client in which modules can be plugged to support different types of interfaces or query algorithms.
-
-{:.comment data-author="RV"}
-Forks argument is good, but it's not just for interfaces.
-Sell this much more broadly.
-At the moment, it reads like you're solving our and Olaf's problem,
-but we're solving something much broader.
-
-In this article, we introduce _Comunica_ as a query client that truly accomplishes this LDF vision.
+In this article, we introduce _Comunica_ as a query client that accomplishes this vision.
 It is a highly _modular_ meta engine for _federated_ _SPARQL query_ evaluation over _heterogeneous interfaces_,
 including TPF entrypoints, SPARQL endpoints and data dumps.
-Comunica thereby positions itself as the successor of the TPF client,
-with the aim to serve as a flexible research platform for experimenting with new Linked Data querying and publication techniques.
-
-{:.comment data-author="RV"}
-Same here, not just LDF.
+Comunica aims to serve as a flexible research platform for experimenting with new Linked Data querying and publication techniques.
 
 Comunica differs from existing query engines on different levels:
 
-1. The **modularity** of the Comunica meta query engine allows for easy _extensions_ and _customization_ of algorithms and functionality. Furthermore, modules can be added and removed using an RDF configuration file, which makes it possible for users to build and finetune their own engine.
-<span class="comment" data-author="RV">Yeah, and those configurations can be published too. Full repeatability of an exact configuration. More than repeatability: just take an existing config, add in your algorithm, and you can compare.</span>
+1. The **modularity** of the Comunica meta query engine allows for easy _extensions_ and _customization_ of algorithms and functionality. Furthermore, modules can be added and removed using an RDF configuration file, which makes it possible for users to build and finetune their own engine. Finally, these configurations can be published for full repeatability of experiments.
 2. Within Comunica, multiple **heterogeneous** interfaces are a first-class citizen. This enables federated querying over heterogeneous sources and makes it for example possible to evaluate queries over any combination of SPARQL endpoints, TPF entrypoints, datadumps, or other types of interfaces.
 3. Comunica is implemented for the **Web** in JavaScript, which makes it possible to use it in a browser, from the command line, via the [SPARQL protocol](cite:cites spec:sparqlprot), or from any Web or JavaScript application.
 
