@@ -67,6 +67,8 @@ Comunica is a SPARQL framework that is _loosely-coupled_ to any RDF indexing str
 as opposed to _tightly-coupled_ SPARQL engines such as
 [AllegroGraph](cite:cites allegrograph), [Blazegraph](cite:cites blazegraph), and [Virtuoso](cite:cites virtuoso).
 For the remainder of this section, we only focus on other loosely-coupled SPARQL frameworks.
+We do not aim to survey _all_ existing frameworks, we focus on a subset of those with
+the most distinguishing features in relation to Comunica.
 
 {:.comment data-author="RV"}
 Mmm no, explain these as engines that are intended to run on a server,
@@ -94,7 +96,7 @@ It can however not directly interact with other types of datasources.
 Furthermore, the TPF client is built for the Web, as it can run in any JavaScript environment, such as the browser.
 
 [Jena](cite:cites jena), [RDFLib](cite:cites rdflib), [rdflib.js](cite:cites rdflibjs) and [rdfstore-js](cite:cites rdfstorejs)
-are frameworks for handling RDF data and include an API for evaluating SPARQL queries.
+are examples of frameworks for handling RDF data and include an API for evaluating SPARQL queries.
 Jena is a Java framework, RDFLib is a python package, and rdflib.js and rdfstore-js are JavaScript modules.
 Jena, or more specifically the ARQ API, and RDFLib are fully SPARQL 1.1 compliant.
 rdflib.js and rdfstore-js both support a subset of SPARQL 1.1.
