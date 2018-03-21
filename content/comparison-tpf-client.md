@@ -11,24 +11,21 @@ The higher modularity of Comunica is however expected to cause performance overh
 due to the additional bus and mediator communication, which does not exist in the TPF Client.
 Hereafter, we compare the performance of the TPF Client and Comunica
 and discover that Comunica has similar performance to the TPF Client.
-As the main goal of Comunica is modularity, and not performance, we do not compare with similar frameworks such as ARQ and RDFLib.
-
-{:.todo}
-Argue why absolute performance is not a problem,
-that the relative performance is key for comparisons
-(plus largest overhead is network anyway).
+As the main goal of Comunica is modularity, and not _absolute_ performance, we do not compare with similar frameworks such as ARQ and RDFLib.
+Instead, _relative_ performance of evaluations using _the same engine_ under _different configurations_ is key for comparisons,
+which will be demonstrated using Comunica hereafter.
 
 For the setup of this evaluation we used a single machine (Intel Core i5-3230M CPU at 2.60 GHz with 8 GB of RAM),
-running the Linked Data Fragments server with a [HDT-backend](cite:cites hdt) and the TPF Client or Comunica.
-<span class="comment" data-author="RV">Exact versions of the TPF Client and HDT module will be needed (cfr. my criticism on other works); link to Comunica config?</span>
+running the Linked Data Fragments server with a [HDT-backend](cite:cites hdt) and the TPF Client or Comunica,
+for which the exact versions and configurations will be linked in the following workflow.
 The main goal of this evaluation is to determine the performance impact of Comunica,
 while keeping all other variables constant.
 
 In order to illustrate the benefit of modularity within Comunica,
 we evaluate using two different configurations of Comunica.
-The first configuration (_Comunica-sort_) <span class="todo">link</span> implements a BGP algorithm that is similar to that of the original TPF Client:
+The first configuration (_Comunica-sort_) implements a BGP algorithm that is similar to that of the original TPF Client:
 it sorts triple patterns based on their estimated counts and evaluates and joins them in that order.
-The second configuration (_Comunica-smallest_) <span class="todo">link</span> implements a simplified version of this BGP algorithm that does not sort _all_ triple patterns in a BGP,
+The second configuration (_Comunica-smallest_) implements a simplified version of this BGP algorithm that does not sort _all_ triple patterns in a BGP,
 but merely picks the triple pattern with the smallest estimated count to evaluate on each recursive call, leading to slightly different query plans.
 
 We used the following <a about="#evaluation-workflow" content="Comunica evaluation workflow" href="#evaluation-workflow" property="rdfs:label" rel="cc:license" resource="https://creativecommons.org/licenses/by/4.0/">evaluation workflow</a>:
