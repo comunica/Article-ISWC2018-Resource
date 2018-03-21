@@ -18,8 +18,9 @@ provides access to a relation database.
 The internal storage can either be a native RDF store, e.g., [AllegroGraph](cito:citesAsAuthority allegrograph) and [Blazegraph](cito:citesAsAuthority blazegraph),
 or a non-RDF store, e.g., [Virtuoso](cito:citesAsAuthority virtuoso) uses a object-relational database management system.
 
-{:.todo}
-Paragraph or sentence about [query algorithms](cito:cites SparqlOptimization, SparqlSelectivityOptimization)
+Various algorithms have been proposed for optimized SPARQL query evaluation.
+Some algorithms for example use the concept of [query rewriting](cite:cites SparqlOptimization) based on algebraic equivalent query operations,
+others have proposed the [optimization of Basic Graph Pattern evaluation](cite:cites SparqlSelectivityOptimization) using selectivity estimation of triple patterns.
 
 In order to evaluate SPARQL queries over datasets of different storage types,
 SPARQL query frameworks were developed, such as
@@ -29,11 +30,10 @@ Jena—or more specifically the ARQ API—and RDFLib are fully [SPARQL 1.1](cite
 rdflib.js and rdfstore-js both support a subset of SPARQL 1.1.
 These SPARQL engines support in-memory models or other sources,
 such as Jena TDB in the case of ARQ.
-Most of the query algorithms in these frameworks are tightly coupled to each other,
-<span class="comment" data-author="RV">not really each other?</span>
+Most of the query algorithms are tightly coupled to these frameworks,
 which makes swapping out query algorithms for specific query operators hard or sometimes even impossible.
-Furthermore, these frameworks do not support federated querying over heterogeneous interfaces out-of-the-box.
-<span class="comment" data-author="RV">I'd rater make the argument that complex things like that are difficult to write in them.</span>
+Furthermore, complex things such as federated querying over heterogeneous interfaces are difficult to implement using these frameworks,
+as they are not supported out-of-the-box.
 This issue of modularity and heterogeneity are two of the main problems we aim to solve within Comunica.
 The differences between Comunica and existing frameworks will be explained in more detail in [](#features).
 
@@ -84,7 +84,7 @@ to discover its usage at runtime.
 A design goal of Comunica is to
 facilitate the interaction with any kind of current and future interface
 within the LDF framework,
-both in singe-source and federated scenarios.
+both in single-source and federated scenarios.
 
 ### Software Design Patterns
 
