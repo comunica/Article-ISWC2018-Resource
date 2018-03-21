@@ -10,17 +10,19 @@ evaluating the efficiency of different join operators,
 or even serve as a complete server-side SPARQL query endpoint that aggregates different datasources.
 In future work, we will look into supporting supporting alternative (non-semantic) query languages as well, such as [GraphQL](cite:cites graphql).
 
-Since Comunica is built on Linked Data and Web technologies,
-it is the ideal research platform for investigating new Linked Data publication interfaces,
+If you are a Web researcher, then Comunica is the ideal research platform
+for investigating new Linked Data publication interfaces,
 and for experimenting with different query algorithms.
-Because Comunica is extensively documented and has a ready-to-use API,
-it can not only be used by the research community,
-but for example also by developers of RDF-consuming applications.
+New modules can be implemented independently without having to fork existing codebases.
+The modules can be combined with each other using an RDF-based configuration file
+that can be instantiated into an actual engine through dependency injection.
+However, the target audience is broader than just the research community.
+As Comunica is built on Linked Data and Web technologies,
+and is extensively documented and has a ready-to-use API,
+developers of RDF-consuming (Web) applications can also make use of the platform.
+In the future, we will continue maintaining and developing Comunica and intend to support and collaborate with future researchers on this platform.
 
-<span class="comment" data-author="RV">Yes, but phrase your sentences with researcher/people as subjects, i.e., involve the reader, draw them in. Also, emphasize again that they just need to build new independent modules, not fork or anything. And that the DI just wires it together.</span>
-
-We invite future and past LDF researchers to implement their interface handlers and algorithms in Comunica,
-<span class="comment" data-author="RV">Maybe say that we will also do that, to not just put the work on others</span>
-so that the effects of _combining_ these features can be investigated, instead of only experimenting with them in isolation.
-In the future, we will continue maintaining and developing Comunica and intend to support future researchers on this platform.
-<span class="comment" data-author="RV">There's a possibility of ending more strongly: now there's a query engine experimentation platform, this will spawn tons of new research, and expose promising areas that remained covered so far.</span>
+The introduction of Comunica will trigger a _new generation of Web querying research_.
+Due to its flexibility and modularity,
+existing areas can be _combined_ and _evaluated_ in more detail,
+and _new promising areas_ that remained covered so far will be exposed.
