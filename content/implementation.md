@@ -28,12 +28,11 @@ Comunica currently supports querying over the following types of _heterogeneous 
 * [HDT datasets](cite:cites hdt)
 * [Versioned OSTRICH datasets](cite:cites ostrich)
 
+Support for new algorithms, query operators and interfaces can be implemented in an external module,
+without having to create a custom fork of the engine.
+The module can then be _plugged_ into existing or new engines that are identified by
+[RDF configuration files](https://github.com/comunica/comunica/blob/master/packages/actor-init-sparql/config/config-default.json){:.mandatory}.
+
 In the future, we will also look into adding support for other interfaces such as
 [brTPF](cite:cites brtpf) for more efficient join operations
 and [VTPF](cite:cites vtpf) for queries over versioned datasets.
-
-{:.todo}
-A remark about extensibility:
-implementing something for Comunica (algorithm, query operators, new interface support)
-just means implementing an external module,
-no need to create a fork or an own engine.
