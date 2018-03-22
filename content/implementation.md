@@ -28,6 +28,9 @@ Comunica currently supports querying over the following types of _heterogeneous 
 * [HDT datasets](cite:cites hdt)
 * [Versioned OSTRICH datasets](cite:cites ostrich)
 
+In order to demonstrate Comunica's ability to evaluate _federated_ query evaluation over _heterogeneous_ sources,
+the following guide shows how you can [try this out in Comunica yourself](https://gist.github.com/rubensworks/34bb69fa6c83176bce60a5e8a25051e8){:.mandatory}.
+
 Support for new algorithms, query operators and interfaces can be implemented in an external module,
 without having to create a custom fork of the engine.
 The module can then be _plugged_ into existing or new engines that are identified by
