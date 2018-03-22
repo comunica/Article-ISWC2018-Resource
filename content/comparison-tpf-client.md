@@ -44,19 +44,19 @@ We used the following <a about="#evaluation-workflow" content="Comunica evaluati
   Install [the TPF Client software](https://github.com/LinkedDataFragments/Client.js){:.mandatory}, implementing the [SPARQL 1.1 protocol](https://www.w3.org/TR/sparql11-protocol){:mandatory}, with its [dependencies](https://linkedsoftwaredependencies.org/raw/ldf-availability-experiment-client.ttl){:.mandatory}.
 </li>
 <li id="workflow-tpf-run" about="#workflow-tpf-run" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#evaluation-workflow" property="rdfs:label" markdown="1">
-  Execute the generated WatDiv queries 3 times on the TPF Client, after doing a warmup run, and record the execution times [results](https://github.com/comunica/test-comunica/blob/master/results/watdiv-ldf.csv).
+  Execute the generated WatDiv queries 3 times on the TPF Client, after doing a warmup run, and record the execution times [results](https://raw.githubusercontent.com/comunica/test-comunica/master/results/watdiv-ldf.csv){:.mandatory}.
 </li>
 <li id="workflow-comunica-sort" about="#workflow-comunica-srt" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#evaluation-workflow" property="rdfs:label" markdown="1">
-  Install [the Comunica software configuration](https://github.com/comunica/test-comunica/blob/master/config/config-sort.json){:.mandatory}, implementing the [SPARQL 1.1 protocol](https://www.w3.org/TR/sparql11-protocol){:mandatory}, with its [dependencies](https://github.com/comunica/test-comunica/blob/master/config/comunica-npm.ttl){:.mandatory}, using the _Comunica-sort_ algorithm.
+  Install [the Comunica software configuration](https://raw.githubusercontent.com/comunica/test-comunica/master/config/config-sort.json){:.mandatory}, implementing the [SPARQL 1.1 protocol](https://www.w3.org/TR/sparql11-protocol){:mandatory}, with its [dependencies](https://raw.githubusercontent.com/comunica/test-comunica/master/config/comunica-npm.ttl){:.mandatory}, using the _Comunica-sort_ algorithm.
 </li>
 <li id="workflow-comunica-run-sort" about="#workflow-comunica-run-sort" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#evaluation-workflow" property="rdfs:label" markdown="1">
-  Execute the generated WatDiv queries 3 times on the Comunica client, after doing a warmup run, and record the [execution times](https://github.com/comunica/test-comunica/blob/master/results/watdiv-comunica-sort.csv).
+  Execute the generated WatDiv queries 3 times on the Comunica client, after doing a warmup run, and record the [execution times](https://raw.githubusercontent.com/comunica/test-comunica/master/results/watdiv-comunica-sort.csv){:.mandatory}.
 </li>
 <li id="workflow-comunica-smallest" about="#workflow-comunica-smallest" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#evaluation-workflow" property="rdfs:label" markdown="1">
-  Update the Comunica installation to use a new [configuration](https://github.com/comunica/test-comunica/blob/master/config/config-smallest.json) supporting the _Comunica-smallest_ algorithm.
+  Update the Comunica installation to use a new [configuration](https://raw.githubusercontent.com/comunica/test-comunica/master/config/config-smallest.json){:.mandatory} supporting the _Comunica-smallest_ algorithm.
 </li>
 <li id="workflow-comunica-run-smallest" about="#workflow-comunica-run-smallest" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#evaluation-workflow" property="rdfs:label" markdown="1">
-  Execute the generated WatDiv queries 3 times on the Comunica client, after doing a warmup run, and record the [execution times](https://github.com/comunica/test-comunica/blob/master/results/watdiv-comunica.csv).
+  Execute the generated WatDiv queries 3 times on the Comunica client, after doing a warmup run, and record the [execution times](https://raw.githubusercontent.com/comunica/test-comunica/master/results/watdiv-comunica.csv){:.mandatory}.
 </li>
 </ol>
 
