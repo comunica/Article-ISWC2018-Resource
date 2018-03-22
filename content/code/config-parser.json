@@ -3,20 +3,14 @@
   "@id": "http://example.org/myrdfparser",
   "@type": "Runner",
   "actors": [
-    {
-      "@type": "ActorInitRdfParse",
+    { "@type": "ActorInitRdfParse",
       "mediatorRdfParse": {
         "@type": "MediatorRace",
         "cc:Mediator/bus": { "@id": "cbrp:Bus/RdfParse" }
-      }
-    },
-    {
-      "@type": "ActorRdfParseN3",
-      "cc:Actor/bus": "cbrp:Actor/RdfParse"
-    },
-    {
-      "@type": "ActorRdfParseJsonLd",
-      "cc:Actor/bus": "cbrp:Actor/RdfParse"
-    },
+      } },
+    { "@type": "ActorRdfParseN3",
+      "cc:Actor/bus": "cbrp:Actor/RdfParse" },
+    { "@type": "ActorRdfParseJsonLd",
+      "cc:Actor/bus": "cbrp:Actor/RdfParse" },
   ]
 }

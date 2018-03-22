@@ -1,3 +1,20 @@
+<figure id="config-actor" class="listing">
+````/code/config-actor.json````
+<figcaption markdown="block">
+Semantic description of a component that is able to parse N3-based RDF serializations.
+This component has a single parameter that allows media types to be registered that this parser is able to handle.
+In this case, the component has four default media types.
+</figcaption>
+</figure>
+
+<figure id="config-parser" class="listing">
+````/code/config-parser.json````
+<figcaption markdown="block">
+Comunica configuration of `ActorInitRdfParse` for parsing an RDF document in an unknown serialization.
+This actor is linked to a mediator with a bus containing two RDF parsers for specific serializations.
+</figcaption>
+</figure>
+
 ## Architecture
 {:#architecture}
 
@@ -26,15 +43,6 @@ In order to refer to Comunica components from within configuration files,
 we semantically describe all Comunica components using the Components.js framework in [JSON-LD](cite:cites jsonld).
 [](#config-actor) shows an example of the semantic description of an RDF parser.
 
-<figure id="config-actor" class="listing">
-````/code/config-actor.json````
-<figcaption markdown="block">
-Semantic description of a component that is able to parse N3-based RDF serializations.
-This component has a single parameter that allows media types to be registered that this parser is able to handle.
-In this case, the component has four default media types.
-</figcaption>
-</figure>
-
 #### Description of Complex Software Configurations
 
 A specific instance of a Comunica engine
@@ -44,14 +52,6 @@ For example, [](#config-parser) shows a configuration file of an engine that is 
 This example shows that, due to its high degree of modularity,
 Comunica can be used for other purposes than a query engine,
 such as building a custom RDF parser.
-
-<figure id="config-parser" class="listing">
-````/code/config-parser.json````
-<figcaption markdown="block">
-Comunica configuration of `ActorInitRdfParse` for parsing an RDF document in an unknown serialization.
-This actor is linked to a mediator with a bus containing two RDF parsers for specific serializations.
-</figcaption>
-</figure>
 
 Since many different configurations can be created,
 it is important to know which one was used for a specific use case or evaluation.
@@ -73,7 +73,7 @@ where each actor interacts with mediators, that in turn invoke other actors that
 The relation between these components, their phases and the chaining of them will be explained hereafter.
 
 <figure id="actor-mediator-bus">
-<img src="img/actor-mediator-bus.svg" alt="[actor-mediator-bus pattern]">
+<img src="img/actor-mediator-bus.svg" alt="[actor-mediator-bus pattern]" class="figure-narrow">
 <figcaption markdown="block">
 Example logic flow where Actor 0 requires an _action_ to be performed.
 This is done by sending the action to the Mediator, which sends a _test action_ to Actors 1, 2 and 3 via the Bus.
@@ -94,7 +94,7 @@ separate buses exist for different message types.
 [](#relation-actor-bus) shows an example of how actors can be registered to buses.
 
 <figure id="relation-actor-bus">
-<img src="img/relation-actor-bus.svg" alt="[relation between actors and buses]">
+<img src="img/relation-actor-bus.svg" alt="[relation between actors and buses]" class="figure-narrow">
 <figcaption markdown="block">
 An example of two different buses each having two subscribed actors.
 The left bus has different actors for parsing triples in a certain RDF serialization to triple objects.

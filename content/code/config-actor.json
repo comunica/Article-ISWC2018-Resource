@@ -7,16 +7,11 @@
       "@type":          "Class",
       "extends":        "cbrp:Actor/RdfParse",
       "requireElement": "ActorRdfParseN3",
-      "comment":        "An actor that parses Turtle-like RDF syntaxes",
+      "comment":        "An actor that parses Turtle-like RDF",
       "parameters": [
         {
           "@id": "caam:Actor/AbstractMediaTypedFixed/mediaType",
-          "default": [
-            "application/trig",
-            "application/n-quads",
-            "text/turtle",
-            "application/n-triples"
-          ]
+          "default": [ "text/turtle", "application/n-triples" ]
         }
       ]
     }
