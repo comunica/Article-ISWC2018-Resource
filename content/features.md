@@ -16,10 +16,10 @@ Heterogeneous interfaces
 : Different types of datasource interfaces should be supported, and it should be possible to add new types independently.
 
 Federation
-: The engine should support federated querying over these different interfaces.
+: The engine should support federated querying over different interfaces.
 
 Web-based
-: The engine should be able to run in Web browsers using native Web technologies.
+: The engine should run in Web browsers using native Web technologies.
 
 In [](#features-comparison), we summarize the availability of these features in similar works.
 
@@ -41,6 +41,11 @@ Comparison of the availability of the main features of Comunica in similar works
 (4) Federation only over SPARQL endpoints using the SERVICE keyword.
 </figcaption>
 </figure>
+
+<span class="placeholder printonly">
+<span style="display: block; height: 2em;"></span>
+<!-- This is a dummy placeholder -->
+</span>
 
 ### SPARQL query evaluation
 

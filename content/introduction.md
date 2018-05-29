@@ -80,4 +80,4 @@ This article is structured as follows.
 In the next section, we discuss the related work, followed by the main features of Comunica in [](#features).
 After that, we introduce the architecture of Comunica in [](#architecture), and its implementation in [](#implementation).
 Next, we compare the performance of different Comunica configurations with the TPF Client in [](#comparison-tpf-client).
-Finally, [](#conclusions) concludes and contains opportunities for future work.
+Finally, [](#conclusions) concludes and discusses future work.

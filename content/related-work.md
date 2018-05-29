@@ -82,7 +82,7 @@ This allows clients without prior knowledge of the exact inputs and outputs of a
 to discover its usage at runtime.
 
 A design goal of Comunica is to
-facilitate the interaction with any kind of current and future interface
+facilitate interaction with any current and future interface
 within the LDF framework,
 both in single-source and federated scenarios.
 
