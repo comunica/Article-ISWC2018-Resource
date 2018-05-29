@@ -1,13 +1,27 @@
 #!/usr/bin/env ruby
 
+require 'scholarmarkdown/snippets'
+require 'scholarmarkdown/filter/acronym'
+require 'scholarmarkdown/filter/citation'
+require 'scholarmarkdown/filter/hyphenate_iri'
+require 'scholarmarkdown/filter/include_code'
+require 'scholarmarkdown/filter/labelify'
+require 'scholarmarkdown/filter/references_to_footer'
+require 'scholarmarkdown/filter/headerids_to_section'
+
 Encoding.default_external = "UTF-8"
 
 compile '/index.*' do
   filter :erb
-  filter :bibmarkdown, bibfile: items['/references.bib'],
-                       style: 'lncs-custom'
+  filter :scholar_citation, bibfile: items['/references.bib'],
+                            style: 'lncs-custom'
   filter :kramdown
-  filter :markupfilter
+  filter :scholar_acronym, acronyms: items['/acronyms.csv']
+  filter :scholar_hyphenate_iri
+  filter :scholar_include_code
+  filter :scholar_labelify
+  filter :scholar_references_to_footer
+  filter :scholar_headerids_to_section
   filter :rubypants
   layout '/default.*'
 end
@@ -25,7 +39,8 @@ route '/**/*.{html,md}*' do
 end
 
 compile '/**/{screen,print}.scss' do
-  filter :sass, syntax: :scss, style: :compressed
+  filter :sass, syntax: :scss,
+                style: :compressed
   write item.identifier.without_ext + '.css'
 end
 ignore '/**/*.scss'
