@@ -19,7 +19,8 @@ However, the target audience is broader than just the research community.
 As Comunica is built on Linked Data and Web technologies,
 and is extensively documented and has a ready-to-use API,
 developers of RDF-consuming (Web) applications can also make use of the platform.
-In the future, we will continue maintaining and developing Comunica and intend to support and collaborate with future researchers on this platform.
+In the future, we will continue [maintaining](https://github.com/comunica/comunica/wiki/Sustainability-Plan){:.mandatory}
+and developing Comunica and intend to support and collaborate with future researchers on this platform.
 
 The introduction of Comunica will trigger a _new generation of Web querying research_.
 Due to its flexibility and modularity,
