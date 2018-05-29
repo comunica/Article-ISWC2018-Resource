@@ -35,7 +35,7 @@ We used the following <a about="#evaluation-workflow" content="Comunica evaluati
   Generate a [WatDiv](cite:cites watdiv) dataset with scale factor=100.
 </li>
 <li id="workflow-queries" about="#workflow-queries" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#evaluation-workflow" property="rdfs:label" markdown="1">
-  Generate the corresponding default WatDiv [queries](https://github.com/comunica/test-comunica/tree/master/sparql/watdiv-10M){:.mandatory} with query-count=5.
+  Generate the corresponding default WatDiv [queries](https://github.com/comunica/test-comunica/tree/ISWC2018/sparql/watdiv-10M){:.mandatory} with query-count=5.
 </li>
 <li id="workflow-tpf-server" about="#workflow-tpf-server" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#evaluation-workflow" property="rdfs:label" markdown="1">
   Install [the server software configuration](https://linkedsoftwaredependencies.org/raw/ldf-availability-experiment-config.jsonld){:.mandatory}, implementing the [TPF specification](https://www.hydra-cg.com/spec/latest/triple-pattern-fragments/){:.mandatory}, with its [dependencies](https://linkedsoftwaredependencies.org/raw/ldf-availability-experiment-setup.ttl){:mandatory}.
