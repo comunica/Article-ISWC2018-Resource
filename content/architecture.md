@@ -1,20 +1,3 @@
-<figure id="config-actor" class="listing">
-````/code/config-actor.json````
-<figcaption markdown="block">
-Semantic description of a component that is able to parse N3-based RDF serializations.
-This component has a single parameter that allows media types to be registered that this parser is able to handle.
-In this case, the component has four default media types.
-</figcaption>
-</figure>
-
-<figure id="config-parser" class="listing">
-````/code/config-parser.json````
-<figcaption markdown="block">
-Comunica configuration of `ActorInitRdfParse` for parsing an RDF document in an unknown serialization.
-This actor is linked to a mediator with a bus containing two RDF parsers for specific serializations.
-</figcaption>
-</figure>
-
 ## Architecture
 {:#architecture}
 
@@ -60,6 +43,23 @@ the RDF documents that are used to instantiate a Comunica engine
 can be [published as Linked Data](cito:citeAsEvidence vanherwegen_semsci_2017).
 They can then serve as provenance
 and as the basis for derived set-ups or evaluations.
+
+<figure id="config-actor" class="listing">
+````/code/config-actor.json````
+<figcaption markdown="block">
+Semantic description of a component that is able to parse N3-based RDF serializations.
+This component has a single parameter that allows media types to be registered that this parser is able to handle.
+In this case, the component has four default media types.
+</figcaption>
+</figure>
+
+<figure id="config-parser" class="listing">
+````/code/config-parser.json````
+<figcaption markdown="block">
+Comunica configuration of `ActorInitRdfParse` for parsing an RDF document in an unknown serialization.
+This actor is linked to a mediator with a bus containing two RDF parsers for specific serializations.
+</figcaption>
+</figure>
 
 ### Flexibility at Run-time using the Actor–Mediator–Bus Pattern
 
