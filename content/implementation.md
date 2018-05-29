@@ -6,7 +6,8 @@ Comunica is available under an open license on [GitHub](https://zenodo.org/recor
 and on the [NPM package manager](https://www.npmjs.com/org/comunica){:.mandatory}.
 The 79 Comunica modules are tested thoroughly, with more than 1,200 unit tests reaching a test coverage of 100%.
 In order to be compatible with existing JavaScript RDF libraries,
-Comunica is follows the JavaScript API specification by the [RDFJS community group](https://www.w3.org/community/rdfjs/){:.mandatory}.
+Comunica follows the JavaScript API specification by the [RDFJS community group](https://www.w3.org/community/rdfjs/){:.mandatory},
+and will [actively be further aligned](https://www.w3.org/community/rdfjs/2018/04/23/rdf-js-the-new-rdf-and-linked-data-javascript-library/) within this community.
 In order to encourage collaboration within the community, we extensively use the [GitHub issue tracker](https://github.com/comunica/comunica/issues){:.mandatory}
 for planned features, bugs and other issues.
 Finally, we publish detailed [documentation](https://comunica.readthedocs.io){:.mandatory} for the usage and development of Comunica.
