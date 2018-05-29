@@ -73,7 +73,8 @@ experiments can repeated and adapted by others.
 3. Comunica is implemented using **Web-based technologies** in JavaScript, which enables usage through browsers, the command line, the [SPARQL protocol](cite:cites spec:sparqlprot), or any Web or JavaScript application.
 
 Comunica and its default modules are publicly available
-on GitHub and the npm package manager under the open-source MIT license.
+on GitHub and the npm package manager under the open-source MIT license
+(canonical citation: [https://zenodo.org/record/1202509#.Wq9GZhNuaHo](https://zenodo.org/record/1202509#.Wq9GZhNuaHo)).
 
 This article is structured as follows.
 In the next section, we discuss the related work, followed by the main features of Comunica in [](#features).
