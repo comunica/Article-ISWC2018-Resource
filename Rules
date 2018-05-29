@@ -25,8 +25,8 @@ compile '/index.*' do
   filter :scholar_headerids_to_section
   filter :rubypants
   layout '/default.*'
-  filter :scholar_dokieli, notifications: 'https://linkedresearch.org/inbox/comunica.github.io/Article-ISWC2018-Resource/',
-                           annotations: 'https://linkedresearch.org/annotation/comunica.github.io/Article-ISWC2018-Resource/'
+  filter :scholar_dokieli, notifications: 'https://pod.linkedsoftwaredependencies.org/inbox/comunica.github.io/Article-ISWC2018-Resource/',
+                           annotations: 'https://pod.linkedsoftwaredependencies.org/annotation/comunica.github.io/Article-ISWC2018-Resource/'
 end
 
 ignore '/*.md'
