@@ -5,3 +5,9 @@
   height: 5em !important;
   width: auto;
 }
+
+header {
+  .actions, .context {
+    display: none;
+  }
+}
