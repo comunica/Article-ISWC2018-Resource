@@ -49,7 +49,7 @@ Another example is that the effects of various [optimizations and extensions for
 have only been evaluated in isolation,
 whereas certain combinations will likely prove complementary.
 
-In order to handle the increasing heterogeneity of Linked Data the Web,
+In order to handle the increasing heterogeneity of Linked Data on the Web,
 as well as various solutions for querying it,
 there is a need for a flexible and modular query engine
 to experiment with all of these techniques—both separately and in combination.
@@ -69,7 +69,7 @@ Users can build and fine-tune a concrete engine
 by wiring the required modules through an RDF configuration document.
 By publishing this document,
 experiments can repeated and adapted by others.
-2. Within Comunica, multiple **heterogeneous interfaces** are a first-class citizen. This enables federated querying over heterogeneous sources and makes it for example possible to evaluate queries over any combination of SPARQL endpoints, TPF interfaces, datadumps, or other types of interfaces.
+2. Within Comunica, multiple **heterogeneous interfaces** are first-class citizens. This enables federated querying over heterogeneous sources and makes it for example possible to evaluate queries over any combination of SPARQL endpoints, TPF interfaces, datadumps, or other types of interfaces.
 3. Comunica is implemented using **Web-based technologies** in JavaScript, which enables usage through browsers, the command line, the [SPARQL protocol](cite:cites spec:sparqlprot), or any Web or JavaScript application.
 
 Comunica and its default modules are publicly available
