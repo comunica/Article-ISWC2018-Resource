@@ -1,6 +1,6 @@
 #!/bin/bash
 # Only publish from the main repository's master branch
-REPO_NAME="comunica/Article-Resource-Comunica"
+REPO_NAME="comunica/Article-ISWC2018-Resource"
 if [ "$TRAVIS_REPO_SLUG" != "$REPO_NAME" ] || [ "$TRAVIS_BRANCH" != "master" ] || [ "$TRAVIS_PULL_REQUEST" != "false" ]; then exit; fi
 echo -e "Generating gh-pages...\n"
 
