@@ -11,7 +11,7 @@ bundle exec guard
 ```
 
 ## Live version
-TODO
+https://comunica.github.io/Article-ISWC2018-Resource/
 
 ## License
 This article is written by [Ruben Taelman](http://rubensworks.net/) and colleagues.
